@@ -1,0 +1,437 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "ProjectBOAT Win64 Debug Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Debug",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 Debug Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Debug",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"ProjectBOAT Win64 Debug Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 Debug Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Debug",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 DebugGame Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"DebugGame",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 DebugGame Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"DebugGame",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"ProjectBOAT Win64 DebugGame Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 DebugGame Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"DebugGame",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 Development Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Development",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 Development Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Development",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"ProjectBOAT Win64 Development Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 Development Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Development",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 Test Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Test",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 Test Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Test",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"ProjectBOAT Win64 Test Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 Test Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Test",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 Shipping Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Shipping",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 Shipping Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Shipping",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"ProjectBOAT Win64 Shipping Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOAT Win64 Shipping Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"ProjectBOAT",
+				"Win64",
+				"Shipping",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOATEditor Win64 Debug Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOATEditor",
+				"Win64",
+				"Debug",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOATEditor Win64 Debug Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOATEditor",
+				"Win64",
+				"Debug",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"ProjectBOATEditor Win64 Debug Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOATEditor Win64 Debug Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"ProjectBOATEditor",
+				"Win64",
+				"Debug",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOATEditor Win64 DebugGame Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOATEditor",
+				"Win64",
+				"DebugGame",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOATEditor Win64 DebugGame Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOATEditor",
+				"Win64",
+				"DebugGame",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"ProjectBOATEditor Win64 DebugGame Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOATEditor Win64 DebugGame Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"ProjectBOATEditor",
+				"Win64",
+				"DebugGame",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOATEditor Win64 Development Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOATEditor",
+				"Win64",
+				"Development",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOATEditor Win64 Development Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"ProjectBOATEditor",
+				"Win64",
+				"Development",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"ProjectBOATEditor Win64 Development Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		},
+		{
+			"label": "ProjectBOATEditor Win64 Development Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"ProjectBOATEditor",
+				"Win64",
+				"Development",
+				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "K:\\Installs\\Epic Games\\UE_5.1"
+			}
+		}
+	]
+}

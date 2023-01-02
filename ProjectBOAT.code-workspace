@@ -1,0 +1,48 @@
+{
+	"folders": [
+		{
+			"name": "ProjectBOAT",
+			"path": "."
+		},
+		{
+			"name": "UE5",
+			"path": "K:\\Installs\\Epic Games\\UE_5.1"
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"files.associations": {
+			"chrono": "cpp",
+			"complex": "cpp",
+			"functional": "cpp",
+			"optional": "cpp",
+			"regex": "cpp",
+			"system_error": "cpp",
+			"type_traits": "cpp",
+			"xlocmon": "cpp",
+			"xtr1common": "cpp",
+			"xutility": "cpp",
+			"*.ipp": "cpp",
+			"__bit_reference": "cpp",
+			"__node_handle": "cpp",
+			"atomic": "cpp",
+			"bitset": "cpp",
+			"cstddef": "cpp",
+			"deque": "cpp",
+			"__memory": "cpp",
+			"filesystem": "cpp",
+			"limits": "cpp",
+			"locale": "cpp",
+			"random": "cpp",
+			"ratio": "cpp",
+			"tuple": "cpp",
+			"vector": "cpp"
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp"
+		]
+	}
+}
