@@ -15,6 +15,12 @@ public:
 	// Sets default values for this actor's properties
 	AWeapon();
 
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AProjectile> WeaponProjectile;
+	
+	UPROPERTY(EditAnywhere)
+	class USceneComponent* ProjectileSpawnPoint;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -24,14 +30,10 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	float FireRate = 25.f;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* WeaponMesh;
 
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<class AProjectile> WeaponProjectile;
 
-	UPROPERTY(EditAnywhere)
-	class USceneComponent* ProjectileSpawnPoint;
 
 	UPROPERTY(EditAnywhere)
 	class ABaseShip* ownerShip;

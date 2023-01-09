@@ -19,6 +19,20 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+private:
+
+	UPROPERTY(EditAnywhere, Category = "Projectile Stats")
+	float initialSpeed = 200.f;
+
+	UPROPERTY(EditAnywhere, Category = "Projectile Stats")
+	float maxSpeed = 500.f;
+
+	UPROPERTY(EditDefaultsOnly)
+	class UStaticMeshComponent* projectileMesh;
+
+	UPROPERTY(VisibleAnywhere)
+	class UProjectileMovementComponent* projectileMovementComponent;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

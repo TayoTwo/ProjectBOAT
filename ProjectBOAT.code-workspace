@@ -36,7 +36,8 @@
 			"random": "cpp",
 			"ratio": "cpp",
 			"tuple": "cpp",
-			"vector": "cpp"
+			"vector": "cpp",
+			"*.rh": "cpp"
 		}
 	},
 	"extensions": {

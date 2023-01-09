@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
+#include "Weapon.h"
 
 APlayerShip::APlayerShip(){
 
@@ -30,6 +31,8 @@ void APlayerShip::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
     PlayerInputComponent->BindAction(TEXT("RMB"),IE_Pressed,this,&APlayerShip::SetTarget);
 
+    //PlayerInputComponent->BindAction(TEXT("RMB"),IE_Repeat,this,&APlayerShip::SetTarget);
+
 }
 
 void APlayerShip::BeginPlay()
@@ -46,6 +49,7 @@ void APlayerShip::Tick(float DeltaTime){
 
     if(PlayerController){
 
+
         FHitResult hitResult;
         PlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,false, hitResult);
 
@@ -56,6 +60,8 @@ void APlayerShip::Tick(float DeltaTime){
                         FColor::Green,
                         false,
                         -1.f);
+
+        TurnWeapon(hitResult.ImpactPoint);
 
         if(isMovingToTarget){
 
@@ -98,25 +104,14 @@ void APlayerShip::MoveHorizontal(float value){
 
 void APlayerShip::MoveToTarget(){
 
-    float distanceToTarget = FVector::Distance(targetPosition,GetActorLocation());
+    UE_LOG(LogTemp, Display, TEXT("Moving"));
 
-    if(PlayerController && distanceToTarget > toTargetDistance){
+    SetActorRotation(FMath::RInterpTo(GetActorRotation(),
+                        targetRotation,
+                        UGameplayStatics::GetWorldDeltaSeconds(this),
+                        turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)));
 
-        UE_LOG(LogTemp, Display, TEXT("Moving to target"));
-
-        FVector targetDir = targetPosition - GetActorLocation();
-        targetDir.Z = 0;
-        FRotator targetRotation = targetDir.ToOrientationRotator();
-
-        SetActorRotation(FQuat::Slerp(GetActorRotation(),targetRotation,turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)));
-        MoveVertical(1.f);
-
-    } else {
-
-        UE_LOG(LogTemp, Display, TEXT("Target at position"));
-        isMovingToTarget = false;
-
-    }
+    MoveVertical(1.f);
 
 }
 
@@ -137,6 +132,10 @@ void APlayerShip::SetTarget(){
 
         targetPosition = hitResult.ImpactPoint;
         isMovingToTarget = true;
+
+        FVector targetDir = targetPosition - GetActorLocation();
+        targetDir.Z = 0;
+        targetRotation = targetDir.ToOrientationRotator();
 
     }
 

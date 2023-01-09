@@ -18,10 +18,18 @@ public:
 	UPROPERTY(EditAnywhere,Category = "Stats")
 	float turretTurnSpeed = 25.f;
 
+	UPROPERTY(EditAnywhere)
+	class AWeapon* weaponActor;
+
+	UPROPERTY(EditAnywhere)
+	class USceneComponent* weaponSpawnPoint;
+
 protected:
 
 	void TurnWeapon(FVector targetLocation);
 	void Fire();
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
 	UPROPERTY(EditAnywhere)
 	class TSubclassOf<class AWeapon> currentWeapon;
@@ -33,6 +41,7 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* BaseMesh;
+	
 
 	// UPROPERTY(EditAnywhere,Category = "Combat")
 	// TSubclassOf<class AProjectile> ProjectileClass;
