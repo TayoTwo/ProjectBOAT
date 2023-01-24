@@ -17,22 +17,35 @@ public:
 	ABaseShip();
 	UPROPERTY(EditAnywhere,Category = "Stats")
 	float turretTurnSpeed = 25.f;
+	UPROPERTY(EditAnywhere,Category = "Stats")
+	float moveSpeed = 500;
+	UPROPERTY(EditAnywhere,Category = "Stats")
+	float turnSpeed = 500;
 
 	UPROPERTY(EditAnywhere)
 	class AWeapon* weaponActor;
+	class AActor* EnemyTarget;
 
 	UPROPERTY(EditAnywhere)
 	class USceneComponent* weaponSpawnPoint;
+	virtual void Fire();
+	class AActor* targetActor;
 
 protected:
 
 	void TurnWeapon(FVector targetLocation);
-	void Fire();
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditAnywhere)
 	class TSubclassOf<class AWeapon> currentWeapon;
+
+	UPROPERTY(VisibleAnywhere,Category = "MoveTo")
+	bool isMovingToTarget = false;
+	UPROPERTY(VisibleAnywhere,Category = "MoveTo")
+	FVector targetPosition;
+	UPROPERTY(VisibleAnywhere,Category = "MoveTo")
+	FRotator targetRotation;
 
 private:
 
@@ -42,7 +55,6 @@ private:
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* BaseMesh;
 	
-
 	// UPROPERTY(EditAnywhere,Category = "Combat")
 	// TSubclassOf<class AProjectile> ProjectileClass;
 

@@ -27,14 +27,22 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Projectile Stats")
 	float maxSpeed = 500.f;
 
+	UPROPERTY(EditAnywhere, Category = "Projectile Stats")
+	bool hasTracking = false;
+	
+	UPROPERTY(EditAnywhere, Category = "Projectile Stats")
+	float TrackingStrength = 1000.f;
+
 	UPROPERTY(EditDefaultsOnly)
 	class UStaticMeshComponent* projectileMesh;
 
 	UPROPERTY(VisibleAnywhere)
 	class UProjectileMovementComponent* projectileMovementComponent;
+	
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	class AActor* MyOwner;
 
 };

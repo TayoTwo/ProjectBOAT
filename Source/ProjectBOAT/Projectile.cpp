@@ -2,7 +2,9 @@
 
 
 #include "Projectile.h"
+#include "PlayerShip.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -18,6 +20,8 @@ AProjectile::AProjectile()
 
 	projectileMovementComponent->InitialSpeed = initialSpeed;
 	projectileMovementComponent->MaxSpeed = maxSpeed;
+	projectileMovementComponent->bIsHomingProjectile = hasTracking;
+	projectileMovementComponent->HomingAccelerationMagnitude = TrackingStrength;
 
 }
 
@@ -26,7 +30,7 @@ void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 
-
+	
 	
 }
 
@@ -34,6 +38,47 @@ void AProjectile::BeginPlay()
 void AProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if(MyOwner){
+
+		MyOwner = GetOwner();
+
+	} else {
+
+		return;
+
+	}
+
+
+	if(Cast<APlayerShip>(MyOwner)->PlayerController && hasTracking){
+
+		//projectileMovementComponent->HomingTargetComponent = Cast<ABaseShip>(MyOwner)->EnemyTarget;
+
+		//projectileMovementComponent->ComputeHomingAcceleration()
+
+        // FVector targetDir = targetPosition - GetActorLocation();
+        // targetDir.Z = 0;
+        // FRotator targetRotation = targetDir.ToOrientationRotator();
+
+		// targetDir = targetPosition - GetActorLocation();
+		// FRotator lookAtRotation = FRotator(0.f,targetDir.Rotation().Yaw,0.f);
+
+		// SetActorRotation(
+		// 				FMath::RInterpTo(GetActorRotation(),
+		// 				lookAtRotation,
+		// 				UGameplayStatics::GetWorldDeltaSeconds(this),
+		// 				TrackingStrength)
+		// 				);
+						
+		//         DrawDebugSphere(GetWorld(),
+        //                 hitResult.ImpactPoint,
+        //                 25.f,
+        //                 12,
+        //                 FColor::Red,
+        //                 false,
+        //                 3.f);
+
+	}
 
 }
 

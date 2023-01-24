@@ -21,19 +21,17 @@ public:
 	UPROPERTY(EditAnywhere)
 	class USceneComponent* ProjectileSpawnPoint;
 
+	UPROPERTY(EditAnywhere, Category = "Weapon Stats")
+	float FireRate = 2.f;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
 
-	UPROPERTY(EditDefaultsOnly)
-	float FireRate = 25.f;
-
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* WeaponMesh;
-
-
 
 	UPROPERTY(EditAnywhere)
 	class ABaseShip* ownerShip;

@@ -7,6 +7,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
 #include "Weapon.h"
+#include "Target.h"
 
 APlayerShip::APlayerShip(){
 
@@ -39,7 +40,11 @@ void APlayerShip::BeginPlay()
 {
 	Super::BeginPlay();
 
-    PlayerController = Cast<APlayerController>(GetController());
+    if(!PlayerController){
+
+        PlayerController = Cast<APlayerController>(GetController());
+
+    }
 	
 }
 
@@ -49,7 +54,7 @@ void APlayerShip::Tick(float DeltaTime){
 
     if(PlayerController){
 
-
+        //UE_LOG(LogTemp, Display, TEXT("PLAYER CONTROLLER FOUND"));
         FHitResult hitResult;
         PlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,false, hitResult);
 
@@ -104,12 +109,28 @@ void APlayerShip::MoveHorizontal(float value){
 
 void APlayerShip::MoveToTarget(){
 
-    UE_LOG(LogTemp, Display, TEXT("Moving"));
+    //UE_LOG(LogTemp, Display, TEXT("Moving"));
 
-    SetActorRotation(FMath::RInterpTo(GetActorRotation(),
+    float distance = FVector::Distance(targetPosition,GetActorLocation());
+
+    UE_LOG(LogTemp, Display, TEXT("DISTANCE TO TARGET: %f"),distance);
+    
+    FVector targetDir = targetPosition - GetActorLocation();
+    targetDir.Z = 0;
+    targetRotation = targetDir.ToOrientationRotator();
+
+    if(distance > keepDriftingDistance && !bIsDrifting){
+
+        SetActorRotation(FMath::RInterpTo(GetActorRotation(),
                         targetRotation,
                         UGameplayStatics::GetWorldDeltaSeconds(this),
                         turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)));
+
+    } else {
+
+        bIsDrifting = true;
+
+    }
 
     MoveVertical(1.f);
 
@@ -132,11 +153,26 @@ void APlayerShip::SetTarget(){
 
         targetPosition = hitResult.ImpactPoint;
         isMovingToTarget = true;
-
-        FVector targetDir = targetPosition - GetActorLocation();
-        targetDir.Z = 0;
-        targetRotation = targetDir.ToOrientationRotator();
+        bIsDrifting = false;
 
     }
+
+}
+
+void APlayerShip::Fire(){
+
+    Super::Fire();
+
+    if(PlayerController){
+
+        FHitResult hitResult;
+        PlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,false, hitResult);
+	    // EnemyTarget = Cast<AActor>(GetWorld()->SpawnActor<ATarget>(
+        //     hitResult.ImpactPoint,
+        //     GetActorRotation()
+        //     ));
+
+    }
+
 
 }

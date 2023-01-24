@@ -5,6 +5,7 @@
 #include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Weapon.h"
+#include "Target.h"
 
 // Sets default values
 ABaseShip::ABaseShip()
@@ -42,7 +43,7 @@ void ABaseShip::BeginPlay(){
 }
 
 void ABaseShip::TurnWeapon(FVector targetLocation){
-
+	
 	if(weaponActor){
 
 		FVector targetDir = targetLocation - weaponActor->GetActorLocation();
@@ -68,7 +69,8 @@ void ABaseShip::Fire(){
 		FRotator projectileSpawnRotation = weaponActor->ProjectileSpawnPoint->GetComponentRotation();
 		FString locationString = projectileSpawnLocation.ToString();
 
-		GetWorld()->SpawnActor<AProjectile>(weaponActor->WeaponProjectile,projectileSpawnLocation,projectileSpawnRotation);
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(weaponActor->WeaponProjectile,projectileSpawnLocation,projectileSpawnRotation);
+		Projectile->SetOwner(this);
 
 	} else {
 

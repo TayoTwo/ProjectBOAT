@@ -20,6 +20,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	virtual void BeginPlay() override;
+	virtual void Fire() override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -28,25 +29,18 @@ public:
 	void SetTarget();
 	void MoveToTarget();
 
+	UPROPERTY(EditAnywhere)
+	float keepDriftingDistance = 100.f;
+	bool bIsDrifting = false;
+	
+	APlayerController* PlayerController;
+
 private:
-
-	UPROPERTY(EditAnywhere,Category = "Stats")
-	float moveSpeed = 500;
-	UPROPERTY(EditAnywhere,Category = "Stats")
-	float turnSpeed = 500;
-
-	UPROPERTY(VisibleAnywhere,Category = "MoveTo")
-	bool isMovingToTarget = false;
-	UPROPERTY(VisibleAnywhere,Category = "MoveTo")
-	FVector targetPosition;
-	UPROPERTY(VisibleAnywhere,Category = "MoveTo")
-	FRotator targetRotation;
 
 	UPROPERTY(EditAnywhere,Category = "Components")
 	class USpringArmComponent* springArm;
 	UPROPERTY(EditAnywhere,Category = "Components")
 	class UCameraComponent* camera;
 
-	APlayerController* PlayerController;
 	
 };
