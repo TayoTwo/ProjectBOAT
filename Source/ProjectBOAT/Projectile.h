@@ -22,6 +22,9 @@ protected:
 private:
 
 	UPROPERTY(EditAnywhere, Category = "Projectile Stats")
+	float Damage = 50.f;
+
+	UPROPERTY(EditAnywhere, Category = "Projectile Stats")
 	float initialSpeed = 200.f;
 
 	UPROPERTY(EditAnywhere, Category = "Projectile Stats")
@@ -38,11 +41,13 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	class UProjectileMovementComponent* projectileMovementComponent;
-	
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit);
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	class AActor* MyOwner;
+	//class AActor* MyOwner;
 
 };

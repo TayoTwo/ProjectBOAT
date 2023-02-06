@@ -113,7 +113,7 @@ void APlayerShip::MoveToTarget(){
 
     float distance = FVector::Distance(targetPosition,GetActorLocation());
 
-    UE_LOG(LogTemp, Display, TEXT("DISTANCE TO TARGET: %f"),distance);
+    //UE_LOG(LogTemp, Display, TEXT("DISTANCE TO TARGET: %f"),distance);
     
     FVector targetDir = targetPosition - GetActorLocation();
     targetDir.Z = 0;

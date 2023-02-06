@@ -61,7 +61,7 @@ void ABaseShip::TurnWeapon(FVector targetLocation){
 
 void ABaseShip::Fire(){
 
-	UE_LOG(LogTemp, Display, TEXT("FIRE!"));
+	//UE_LOG(LogTemp, Display, TEXT("FIRE!"));
 	
 	if(weaponActor){
 

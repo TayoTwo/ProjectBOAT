@@ -30,7 +30,7 @@ void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 
-	
+	projectileMesh->OnComponentHit.AddDynamic(this,&AProjectile::OnHit);
 	
 }
 
@@ -39,18 +39,7 @@ void AProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(MyOwner){
-
-		MyOwner = GetOwner();
-
-	} else {
-
-		return;
-
-	}
-
-
-	if(Cast<APlayerShip>(MyOwner)->PlayerController && hasTracking){
+	if(GetOwner() && Cast<APlayerShip>(GetOwner())->PlayerController && hasTracking){
 
 		//projectileMovementComponent->HomingTargetComponent = Cast<ABaseShip>(MyOwner)->EnemyTarget;
 
@@ -79,6 +68,30 @@ void AProjectile::Tick(float DeltaTime)
         //                 3.f);
 
 	}
+
+}
+
+void AProjectile::OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit){
+
+	UE_LOG(LogTemp, Display, TEXT("HIT"));
+	auto MyOwner = GetOwner();
+
+	if(MyOwner == nullptr) return;
+
+	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
+	auto DamageTypeClass = UDamageType::StaticClass();
+
+	if(OtherActor && OtherActor != this && OtherActor != MyOwner){
+
+		UGameplayStatics::ApplyDamage(OtherActor,Damage, MyOwnerInstigator, this,DamageTypeClass);
+		//UGameplayStatics::SpawnEmitterAtLocation(this,HitParticles,GetActorLocation(),GetActorRotation());
+		//UGameplayStatics::PlaySoundAtLocation(this,HitSound,GetActorLocation());
+
+	}
+
+	Destroy();
+
+	//UE_LOG(LogTemp,Warning, TEXT("%s hit %s's %s"),*HitComp->GetName(),*OtherActor->GetName(),*OtherComp->GetName());
 
 }
 

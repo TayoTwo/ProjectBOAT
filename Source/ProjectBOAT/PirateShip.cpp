@@ -52,15 +52,15 @@ void APirateShip::MoveToTarget(){
 
     //UE_LOG(LogTemp, Display, TEXT("Moving"));
 
-    SetActorRotation(FMath::RInterpTo(GetActorRotation(),
-                        targetRotation,
-                        UGameplayStatics::GetWorldDeltaSeconds(this),
-                        turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)));
+    // SetActorRotation(FMath::RInterpTo(GetActorRotation(),
+    //                     targetRotation,
+    //                     UGameplayStatics::GetWorldDeltaSeconds(this),
+    //                     turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)));
 
-    FVector moveDir = FVector::ZeroVector;
-    moveDir.X = moveSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
+    // FVector moveDir = FVector::ZeroVector;
+    // moveDir.X = moveSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
 
-	AddActorLocalOffset(moveDir,true);
+	// AddActorLocalOffset(moveDir,true);
 
 }
 
@@ -77,7 +77,6 @@ void APirateShip::SetTarget(){
         targetRotation = targetDir.ToOrientationRotator();
 
     }
-
 
 }
 
