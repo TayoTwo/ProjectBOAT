@@ -9,7 +9,7 @@ void APirateAIController::BeginPlay()
 {
     Super::BeginPlay();
 
-    ship = Cast<ABaseShip>(GetOwner());
+    ship = Cast<ABaseShip>(GetPawn());
 
     if(ship != nullptr){
 
@@ -30,10 +30,11 @@ void APirateAIController::Tick(float DeltaSeconds){
 
     if(ship == nullptr){
 
-        ship = Cast<ABaseShip>(GetOwner());
+        UE_LOG(LogTemp, Display, TEXT("SHIP IS NULL"));
+        ship = Cast<ABaseShip>(GetPawn());
         SetupController();
 
-    }
+    } 
 
 }
 
