@@ -3,12 +3,20 @@
 
 #include "PirateShip.h"
 #include "PlayerShip.h"
+#include "PirateAIController.h"
 #include "Weapon.h"
 #include "Kismet/GameplayStatics.h"
+#include "Blueprint/AIBlueprintHelperLibrary.h"
 #include "TimerManager.h"
 
 APirateShip::APirateShip(){
 
+    // Setup the perception component
+    PerceptionComponent = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("AIPerception Component"));
+    sightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("Sight Config"));
+    PerceptionComponent->ConfigureSense(*sightConfig);
+    PerceptionComponent->SetDominantSense(sightConfig->GetSenseImplementation());
+    PerceptionComponent->OnPerceptionUpdated.AddDynamic(this, &APirateShip::OnSightSensed);
 
 }
 
@@ -17,6 +25,8 @@ void APirateShip::BeginPlay(){
     Super::BeginPlay();
 
     playerShip = Cast<APlayerShip>(UGameplayStatics::GetPlayerPawn(this,0));
+    controller =  Cast<APirateAIController>(UAIBlueprintHelperLibrary::GetAIController(this));
+    sightConfig->SightRadius = controller->aggroRange;
 
     if(weaponActor){
 
@@ -37,32 +47,8 @@ void APirateShip::Tick(float DeltaTime){
     SetTarget();
     TurnWeapon(targetPosition);
 
-    float distance = FVector::Dist(GetActorLocation(),targetPosition);
-
-    if(isMovingToTarget && distance > shootRange && distance < aggroRange){
-
-        MoveToTarget();
-
-    }
-
-
 }
 
-void APirateShip::MoveToTarget(){
-
-    //UE_LOG(LogTemp, Display, TEXT("Moving"));
-
-    // SetActorRotation(FMath::RInterpTo(GetActorRotation(),
-    //                     targetRotation,
-    //                     UGameplayStatics::GetWorldDeltaSeconds(this),
-    //                     turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)));
-
-    // FVector moveDir = FVector::ZeroVector;
-    // moveDir.X = moveSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
-
-	// AddActorLocalOffset(moveDir,true);
-
-}
 
 void APirateShip::SetTarget(){
 
@@ -93,12 +79,12 @@ void APirateShip::CheckFireCondition(){
 
 bool APirateShip::CanFire(){
 
-    if(playerShip){
+    // if(playerShip){
 
-        float distance = FVector::Dist(GetActorLocation(),playerShip->GetActorLocation());
+    //     float distance = FVector::Dist(GetActorLocation(),playerShip->GetActorLocation());
 
-        return (distance <= shootRange);
-    }
+    //     return (distance <= shootRange);
+    // }
 
     return false;
 }
@@ -109,5 +95,11 @@ void APirateShip::Fire(){
     Super::Fire();
 
 
+
+}
+
+void APirateShip::OnSightSensed(const TArray<AActor*>&DetectedPawn){
+
+    UE_LOG(LogTemp, Display, TEXT("SOMETHING IS IN MY VISION"));
 
 }

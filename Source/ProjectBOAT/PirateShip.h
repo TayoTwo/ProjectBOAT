@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "BaseShip.h"
+#include "Perception/AIPerceptionComponent.h"
+#include "Perception/AISenseConfig_Sight.h"
 #include "PirateShip.generated.h"
 
 
@@ -25,16 +27,19 @@ public:
 	virtual void Fire() override;
 
 	void SetTarget();
-	void MoveToTarget();
 
 	class APlayerShip* playerShip;
+	class APirateAIController* controller;
 
-	FTimerHandle FireRateTimerHandle;
-	UPROPERTY(EditAnywhere, Category = "Pirate Stats")
-	float aggroRange;
-	UPROPERTY(EditAnywhere, Category = "Pirate Stats")
-	float shootRange;
 	void CheckFireCondition();
 	bool CanFire();
+
+private:
+
+	class UAIPerceptionComponent* PerceptionComponent;
+	class UAISenseConfig_Sight* sightConfig;
+
+	UFUNCTION()	
+	void OnSightSensed(const TArray<AActor*>&DetectedPawn);
 	
 };

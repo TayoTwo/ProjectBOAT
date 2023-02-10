@@ -37,7 +37,10 @@
 			"ratio": "cpp",
 			"tuple": "cpp",
 			"vector": "cpp",
-			"*.rh": "cpp"
+			"*.rh": "cpp",
+			"iosfwd": "cpp",
+			"xlocbuf": "cpp",
+			"string": "cpp"
 		}
 	},
 	"extensions": {

@@ -17,9 +17,12 @@ EBTNodeResult::Type UBTTMoveToSpawnLocation::ExecuteTask(UBehaviorTreeComponent 
     Super::ExecuteTask(OwnerComp,NodeMemory);
     //get AI controller and its NPC
 
+    UE_LOG(LogTemp, Display, TEXT("TASK EXECUTING"));
+    bNotifyTick = true;
+    controller = Cast<APirateAIController>(OwnerComp.GetAIOwner());
+    ship = controller->ship;
 
-
-    return EBTNodeResult::Type();
+    return EBTNodeResult::Type::InProgress;
 
 }
 
@@ -27,32 +30,43 @@ void UBTTMoveToSpawnLocation::TickTask(UBehaviorTreeComponent &OwnerComp,uint8 *
 
     Super::TickTask(OwnerComp,NodeMemory,DeltaSeconds);
 
-    if(ship != nullptr){
+    //UE_LOG(LogTemp, Display, TEXT("TASK TICKING"));
 
-        auto const controller = Cast<APirateAIController>(OwnerComp.GetAIOwner());
+    if(ship != nullptr){
 
         UBlackboardComponent* blackBoard = controller->GetBlackboardComponent(); 
 
         FVector spawnPosition = blackBoard->GetValueAsVector("SpawnLocation");
+        float distance = FVector::Distance(ship->GetActorLocation(),spawnPosition);
         FVector targetDir = spawnPosition - ship->GetActorLocation();
         targetDir.Z = 0;
         FRotator targetRotation = targetDir.ToOrientationRotator();
 
-        // ship->SetActorRotation(FMath::RInterpTo(
-        //                     ship->GetActorRotation(),
-        //                     targetRotation,
-        //                     UGameplayStatics::GetWorldDeltaSeconds(this),
-        //                     ship->turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)
-        //                      ));
+        ship->SetActorRotation(FMath::RInterpTo(
+                            ship->GetActorRotation(),
+                            targetRotation,
+                            UGameplayStatics::GetWorldDeltaSeconds(this),
+                            ship->turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)
+                             ));
 
-        ship->SetActorRotation(targetRotation);
 
         FVector moveDir = FVector::ZeroVector;
         moveDir.X = ship->moveSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
 
         ship->AddActorLocalOffset(moveDir,true);
 
-        UE_LOG(LogTemp, Display, TEXT("%s is moving to a target"),*ship->GetName());
+        if(distance < AcceptableRadius){
+
+            FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
+            //UE_LOG(LogTemp, Display, TEXT("TASK IS FINISHED"));
+
+        } else {
+
+            //UE_LOG(LogTemp, Display, TEXT("TASK IS IN PROGRESS"));
+
+        }
+
+        //UE_LOG(LogTemp, Display, TEXT("Distance to target %f / %f"),distance,AcceptableRadius);
 
     }
 

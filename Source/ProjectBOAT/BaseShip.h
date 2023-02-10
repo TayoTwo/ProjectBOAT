@@ -15,6 +15,7 @@ class PROJECTBOAT_API ABaseShip : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ABaseShip();
+	void TurnWeapon(FVector targetLocation);
 	UPROPERTY(EditAnywhere,Category = "Stats")
 	float turretTurnSpeed = 25.f;
 	UPROPERTY(EditAnywhere,Category = "Stats")
@@ -30,10 +31,10 @@ public:
 	class USceneComponent* weaponSpawnPoint;
 	virtual void Fire();
 	class AActor* targetActor;
+	FTimerHandle FireRateTimerHandle;
 
 protected:
 
-	void TurnWeapon(FVector targetLocation);
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 

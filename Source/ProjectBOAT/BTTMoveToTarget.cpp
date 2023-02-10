@@ -2,7 +2,9 @@
 
 
 #include "BTTMoveToTarget.h"
-#include "AIController.h"
+#include "PirateAIController.h"
+#include "BehaviorTree/BlackboardComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 UBTTMoveToTarget::UBTTMoveToTarget(const FObjectInitializer &ObjectInitializer){
 
@@ -12,29 +14,61 @@ UBTTMoveToTarget::UBTTMoveToTarget(const FObjectInitializer &ObjectInitializer){
 
 EBTNodeResult::Type UBTTMoveToTarget::ExecuteTask(UBehaviorTreeComponent &OwnerComp, uint8* NodeMemory){
 
+    Super::ExecuteTask(OwnerComp,NodeMemory);
     //get AI controller and its NPC
 
-    // auto const controller = Cast<AAIController>(OwnerComp.GetAIOwner());
-    // ship = Cast<ABaseShip>(controller->GetPawn());
+    UE_LOG(LogTemp, Display, TEXT("TASK EXECUTING"));
+    bNotifyTick = true;
+    controller = Cast<APirateAIController>(OwnerComp.GetAIOwner());
+    ship = controller->ship;
 
-    // FVector targetPosition = get_blackboard()->GetValueAsVector("MoveTo");
-    // FVector targetDir = targetPosition - ship->GetActorLocation();
-    // targetDir.Z = 0;
-    // FRotator targetRotation = targetDir.ToOrientationRotator();
+    return EBTNodeResult::Type::InProgress;
 
-    // ship->SetActorRotation(FMath::RInterpTo(pirateShip->GetActorRotation(),
-    //                     targetRotation,
-    //                     UGameplayStatics::GetWorldDeltaSeconds(this),
-    //                     turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)));
+}
 
-    // FVector moveDir = FVector::ZeroVector;
-    // moveDir.X = ship.moveSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
+void UBTTMoveToTarget::TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMemory,float DeltaSeconds){
 
-	// AddActorLocalOffset(moveDir,true);
+    Super::TickTask(OwnerComp,NodeMemory,DeltaSeconds);
 
-    UE_LOG(LogTemp, Display, TEXT("%s is moving to a target"),*ship->GetName());
+    //UE_LOG(LogTemp, Display, TEXT("TASK TICKING"));
 
-    return EBTNodeResult::Type();
+    if(ship != nullptr){
+
+        UBlackboardComponent* blackBoard = controller->GetBlackboardComponent(); 
+
+        FVector targetPosition = blackBoard->GetValueAsVector("MoveTo");
+        float distance = FVector::Distance(ship->GetActorLocation(),targetPosition);
+        FVector targetDir = targetPosition - ship->GetActorLocation();
+        targetDir.Z = 0;
+        FRotator targetRotation = targetDir.ToOrientationRotator();
+
+        ship->SetActorRotation(FMath::RInterpTo(
+                            ship->GetActorRotation(),
+                            targetRotation,
+                            UGameplayStatics::GetWorldDeltaSeconds(this),
+                            ship->turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)
+                             ));
+
+
+        FVector moveDir = FVector::ZeroVector;
+        moveDir.X = ship->moveSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
+
+        ship->AddActorLocalOffset(moveDir,true);
+
+        if(distance < AcceptableRadius){
+
+            FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
+            //UE_LOG(LogTemp, Display, TEXT("TASK IS FINISHED"));
+
+        } else {
+
+            //UE_LOG(LogTemp, Display, TEXT("TASK IS IN PROGRESS"));
+
+        }
+
+        //UE_LOG(LogTemp, Display, TEXT("Distance to target %f / %f"),distance,AcceptableRadius);
+
+    }
 
 }
 
@@ -42,21 +76,5 @@ void UBTTMoveToTarget::OnGameplayTaskActivated(UGameplayTask &Task){
 
     Super::OnGameplayTaskActivated(Task);
     //MoveToTarget();
-
-}
-
-void UBTTMoveToTarget::MoveToTarget(){
-
-    // UE_LOG(LogTemp, Display, TEXT("Moving"));
-
-    // SetActorRotation(FMath::RInterpTo(GetActorRotation(),
-    //                     targetRotation,
-    //                     UGameplayStatics::GetWorldDeltaSeconds(this),
-    //                     turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)));
-
-    // FVector moveDir = FVector::ZeroVector;
-    // moveDir.X = moveSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
-
-	// AddActorLocalOffset(moveDir,true);
 
 }

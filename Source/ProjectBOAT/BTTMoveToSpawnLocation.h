@@ -23,6 +23,11 @@ public:
 	virtual EBTNodeResult::Type ExecuteTask(class UBehaviorTreeComponent &OwnerComp, uint8* NodeMemory) override; 
 	virtual void TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMemory,float DeltaSeconds) override; 
 	class ABaseShip* ship;
+	class APirateAIController* controller;
+	UPROPERTY(EditAnywhere)
+	float AcceptableRadius;
+	UPROPERTY(VisibleAnywhere)
+	bool bHasTaskFinished;
 	virtual void OnGameplayTaskActivated(UGameplayTask &Task) override;
 
 protected:

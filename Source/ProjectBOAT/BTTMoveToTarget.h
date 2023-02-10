@@ -20,10 +20,15 @@ class PROJECTBOAT_API UBTTMoveToTarget : public UBTTask_BlackboardBase
 public: 
 
 	UBTTMoveToTarget(const FObjectInitializer &ObjectInitializer);
-	EBTNodeResult::Type ExecuteTask(class UBehaviorTreeComponent &OwnerComp, uint8* NodeMemory); 
+	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent &OwnerComp, uint8* NodeMemory);
+	virtual void TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMemory,float DeltaSeconds) override; 
 	class ABaseShip* ship;
+	class APirateAIController* controller;
+	UPROPERTY(EditAnywhere)
+	float AcceptableRadius;
+	UPROPERTY(VisibleAnywhere)
+	bool bHasTaskFinished;
 	virtual void OnGameplayTaskActivated(UGameplayTask &Task) override;
-	void MoveToTarget();
 
 protected:
 
