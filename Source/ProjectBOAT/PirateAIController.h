@@ -43,12 +43,12 @@ protected:
 private:
 	UPROPERTY(VisibleAnywhere)
 	class UBehaviorTree* AIBehaviorTree;
-	// UPROPERTY(EditAnywhere)
-	// EPirateState currentState;
-	// UAIPerceptionComponent PerceptionComponent;
-	// UAISenseConfig_Sight sightConfig;
 
-	// void OnSightSensed();
+	// class UAIPerceptionComponent* PerceptionComponent;
+	// class UAISenseConfig_Sight* sightConfig;
+
+	// UFUNCTION()	
+	// void OnSightSensed(const TArray<AActor*>&DetectedPawn);
 
 };
 

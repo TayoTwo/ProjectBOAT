@@ -60,7 +60,7 @@ void APlayerShip::Tick(float DeltaTime){
 
         DrawDebugSphere(GetWorld(),
                         hitResult.ImpactPoint,
-                        25.f,
+                        100.f,
                         12,
                         FColor::Green,
                         false,

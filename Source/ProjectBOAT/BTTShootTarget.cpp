@@ -14,7 +14,7 @@ UBTTShootTarget::UBTTShootTarget(const FObjectInitializer &ObjectInitializer){
 
 EBTNodeResult::Type UBTTShootTarget::ExecuteTask(UBehaviorTreeComponent &OwnerComp, uint8 *NodeMemory){
 
-    UE_LOG(LogTemp, Display, TEXT("TASK EXECUTING"));
+    //UE_LOG(LogTemp, Display, TEXT("TASK EXECUTING"));
     bNotifyTick = true;
     controller = Cast<APirateAIController>(OwnerComp.GetAIOwner());
     ship = controller->ship;
@@ -40,7 +40,26 @@ void UBTTShootTarget::TickTask(UBehaviorTreeComponent &OwnerComp, uint8 *NodeMem
 
         ship->TurnWeapon(targetPosition);
 
+        // if(distance > AcceptableRadius){
+
+        //     FinishLatentTask(OwnerComp, EBTNodeResult::Aborted);
+        //     UE_LOG(LogTemp, Display, TEXT("SHOOT ABORTED"));
+
+        // }
+
     }
+
+}
+
+void UBTTShootTarget::OnTaskFinished(UBehaviorTreeComponent &OwnerComp, uint8 *NodeMemory, EBTNodeResult::Type TaskResult){
+
+    // UE_LOG(LogTemp, Display, TEXT("TASK FINISHED"));
+
+    // if(ship != nullptr){
+
+    //     ship->GetWorldTimerManager().ClearTimer(ship->FireRateTimerHandle);
+
+    // }
 
 }
 

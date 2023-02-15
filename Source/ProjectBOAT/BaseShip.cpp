@@ -22,6 +22,9 @@ ABaseShip::ABaseShip()
 	weaponSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Weapon Spawn Point"));
 	weaponSpawnPoint->SetupAttachment(CapsuleComp);
 
+	inventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("Inventory Component"));
+	healthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
+
 }
 
 void ABaseShip::BeginPlay(){
@@ -32,13 +35,20 @@ void ABaseShip::BeginPlay(){
 
     if(!weaponActor){
 
+		//UE_LOG(LogTemp, Display, TEXT("SPAWNING WEAPON"));
+
         weaponActor = GetWorld()->SpawnActor<AWeapon>(currentWeapon,weaponSpawnPoint->GetComponentLocation(),weaponSpawnPoint->GetComponentRotation());
 
         weaponActor->AttachToActor(this,FAttachmentTransformRules(EAttachmentRule::SnapToTarget, false));
 
         weaponActor->SetActorLocation(weaponSpawnPoint->GetComponentLocation());
 
+		inventoryComponent->AddItem(Cast<AWeapon>(weaponActor));
+
     }
+
+	
+	//UE_LOG(LogTemp, Display, TEXT("TEST"));
 
 }
 

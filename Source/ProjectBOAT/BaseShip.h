@@ -3,6 +3,8 @@
 #pragma once
 
 #include "Projectile.h"
+#include "InventoryComponent.h"
+#include "HealthComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "BaseShip.generated.h"
@@ -55,6 +57,10 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* BaseMesh;
+	UPROPERTY(EditAnywhere)
+	class UInventoryComponent* inventoryComponent;
+	UPROPERTY(EditAnywhere)
+	class UHealthComponent* healthComponent;
 	
 	// UPROPERTY(EditAnywhere,Category = "Combat")
 	// TSubclassOf<class AProjectile> ProjectileClass;

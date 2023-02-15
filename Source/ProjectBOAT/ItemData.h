@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Weapon.h"
 #include "Engine/DataAsset.h"
 #include "ItemData.generated.h"
 
@@ -20,7 +21,7 @@ struct FItem {
 	UPROPERTY(EditAnywhere)
 	bool bIsWeapon;
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<class AWeapon> Weapon;
+	AWeapon* Weapon;
 
 };
 

@@ -21,11 +21,12 @@ public:
 	UBTTShootTarget(const FObjectInitializer &ObjectInitializer);
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent &OwnerComp, uint8* NodeMemory);
 	virtual void TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMemory,float DeltaSeconds) override; 
-	void Fire();
+	virtual void OnTaskFinished(UBehaviorTreeComponent & OwnerComp,uint8 * NodeMemory,EBTNodeResult::Type TaskResult); 
 	class ABaseShip* ship;
 	class APirateAIController* controller;
 	class AWeapon* weaponActor;
-
+	UPROPERTY(EditAnywhere)
+	float AcceptableRadius;
 	UPROPERTY(VisibleAnywhere)
 	bool bHasTaskFinished;
 	virtual void OnGameplayTaskActivated(UGameplayTask &Task) override;

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ItemData.h"
 #include "Components/ActorComponent.h"
 #include "InventoryComponent.generated.h"
 
@@ -23,10 +24,15 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	void AddItem(FItem item);
+	void AddItem(AWeapon* weaponActor);
+	void RemoveItem(FItem item);
 
 private:
 
-	// UPROPERTY(EditAnywhere, Category = "Items")
-	// TArray<FItem> items;
+	UPROPERTY(EditAnywhere, Category = "Items")
+	int maxInventorySize = 10;
+	UPROPERTY(EditAnywhere, Category = "Items")
+	TArray<FItem> items;
 
 };

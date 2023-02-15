@@ -8,13 +8,11 @@
 
 APirateAIController::APirateAIController(){
 
-    // Setup the perception component
     // PerceptionComponent = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("AIPerception Component"));
     // sightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("Sight Config"));
     // PerceptionComponent->ConfigureSense(*sightConfig);
     // PerceptionComponent->SetDominantSense(sightConfig->GetSenseImplementation());
-    // PerceptionComponent->OnPerceptionUpdated.AddDynamic(this, &APirateAIController::OnSightSensed);
-
+    // PerceptionComponent->OnPerceptionUpdated.AddDynamic(this, &APirateShip::OnSightSensed);
 }
 
 void APirateAIController::BeginPlay()
@@ -93,7 +91,7 @@ void APirateAIController::SetupController(){
 
 }
 
-// void APirateAIController::OnSightSensed(){
+// void APirateShip::OnSightSensed(const TArray<AActor*>&DetectedPawn){
 
 //     UE_LOG(LogTemp, Display, TEXT("SOMETHING IS IN MY VISION"));
 

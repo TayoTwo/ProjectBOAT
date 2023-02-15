@@ -44,8 +44,8 @@ void APirateShip::Tick(float DeltaTime){
     //UE_LOG(LogTemp, Display, TEXT("Target Position %s"),*targetPosition.ToString());
 
 
-    SetTarget();
-    TurnWeapon(targetPosition);
+    //SetTarget();
+    //TurnWeapon(targetPosition);
 
 }
 
