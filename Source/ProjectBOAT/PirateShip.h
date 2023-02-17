@@ -36,10 +36,10 @@ public:
 
 private:
 
-	class UAIPerceptionComponent* PerceptionComponent;
-	class UAISenseConfig_Sight* sightConfig;
+	// class UAIPerceptionComponent* PerceptionComponent;
+	// class UAISenseConfig_Sight* sightConfig;
 
-	UFUNCTION()	
-	void OnSightSensed(const TArray<AActor*>&DetectedPawn);
+	// UFUNCTION()	
+	// void OnSightSensed(const TArray<AActor*>&DetectedPawn);
 	
 };

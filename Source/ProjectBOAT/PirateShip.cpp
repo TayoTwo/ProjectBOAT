@@ -12,11 +12,11 @@
 APirateShip::APirateShip(){
 
     // Setup the perception component
-    PerceptionComponent = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("AIPerception Component"));
-    sightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("Sight Config"));
-    PerceptionComponent->ConfigureSense(*sightConfig);
-    PerceptionComponent->SetDominantSense(sightConfig->GetSenseImplementation());
-    PerceptionComponent->OnPerceptionUpdated.AddDynamic(this, &APirateShip::OnSightSensed);
+    // PerceptionComponent = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("AIPerception Component"));
+    // sightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("Sight Config"));
+    // PerceptionComponent->ConfigureSense(*sightConfig);
+    // PerceptionComponent->SetDominantSense(sightConfig->GetSenseImplementation());
+    // PerceptionComponent->OnPerceptionUpdated.AddDynamic(this, &APirateShip::OnSightSensed);
 
 }
 
@@ -26,7 +26,7 @@ void APirateShip::BeginPlay(){
 
     playerShip = Cast<APlayerShip>(UGameplayStatics::GetPlayerPawn(this,0));
     controller =  Cast<APirateAIController>(UAIBlueprintHelperLibrary::GetAIController(this));
-    sightConfig->SightRadius = controller->aggroRange;
+    //sightConfig->SightRadius = controller->aggroRange;
 
     if(weaponActor){
 
@@ -98,8 +98,8 @@ void APirateShip::Fire(){
 
 }
 
-void APirateShip::OnSightSensed(const TArray<AActor*>&DetectedPawn){
+// void APirateShip::OnSightSensed(const TArray<AActor*>&DetectedPawn){
 
-    UE_LOG(LogTemp, Display, TEXT("SOMETHING IS IN MY VISION"));
+//     UE_LOG(LogTemp, Display, TEXT("SOMETHING IS IN MY VISION"));
 
-}
+// }

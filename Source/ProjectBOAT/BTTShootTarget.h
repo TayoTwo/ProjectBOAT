@@ -30,5 +30,6 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	bool bHasTaskFinished;
 	virtual void OnGameplayTaskActivated(UGameplayTask &Task) override;
+	virtual void OnGameplayTaskDeactivated(UGameplayTask & Task) override;
 	
 };

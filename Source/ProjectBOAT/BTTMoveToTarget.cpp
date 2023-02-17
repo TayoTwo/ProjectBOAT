@@ -17,7 +17,7 @@ EBTNodeResult::Type UBTTMoveToTarget::ExecuteTask(UBehaviorTreeComponent &OwnerC
     Super::ExecuteTask(OwnerComp,NodeMemory);
     //get AI controller and its NPC
 
-    UE_LOG(LogTemp, Display, TEXT("TASK EXECUTING"));
+    //UE_LOG(LogTemp, Display, TEXT("TASK EXECUTING"));
     bNotifyTick = true;
     controller = Cast<APirateAIController>(OwnerComp.GetAIOwner());
     ship = controller->ship;

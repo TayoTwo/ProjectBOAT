@@ -53,18 +53,30 @@ void UBTTShootTarget::TickTask(UBehaviorTreeComponent &OwnerComp, uint8 *NodeMem
 
 void UBTTShootTarget::OnTaskFinished(UBehaviorTreeComponent &OwnerComp, uint8 *NodeMemory, EBTNodeResult::Type TaskResult){
 
-    // UE_LOG(LogTemp, Display, TEXT("TASK FINISHED"));
+    UE_LOG(LogTemp, Display, TEXT("TASK FINISHED"));
 
-    // if(ship != nullptr){
+    if(ship != nullptr){
 
-    //     ship->GetWorldTimerManager().ClearTimer(ship->FireRateTimerHandle);
+        ship->GetWorldTimerManager().ClearTimer(ship->FireRateTimerHandle);
 
-    // }
+    }
 
 }
 
 void UBTTShootTarget::OnGameplayTaskActivated(UGameplayTask &Task){
 
 
+
+}
+
+void UBTTShootTarget::OnGameplayTaskDeactivated(UGameplayTask &Task){
+
+    UE_LOG(LogTemp, Display, TEXT("TASK FINISHED"));
+
+    if(ship != nullptr){
+
+        ship->GetWorldTimerManager().ClearTimer(ship->FireRateTimerHandle);
+
+    }
 
 }
