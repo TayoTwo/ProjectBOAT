@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Projectile.h"
+#include "Dropbox.h"
 #include "InventoryComponent.h"
 #include "HealthComponent.h"
 #include "CoreMinimal.h"
@@ -31,9 +32,17 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	class USceneComponent* weaponSpawnPoint;
+	UPROPERTY(EditAnywhere)
+	class UBoxComponent* boxComponent;
 	virtual void Fire();
+	virtual void Die();
 	class AActor* targetActor;
 	FTimerHandle FireRateTimerHandle;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class ADropbox> dropbox;
+	UPROPERTY(EditAnywhere)
+	class UInventoryComponent* inventoryComponent;
+	
 
 protected:
 
@@ -57,11 +66,12 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* BaseMesh;
-	UPROPERTY(EditAnywhere)
-	class UInventoryComponent* inventoryComponent;
+
 	UPROPERTY(EditAnywhere)
 	class UHealthComponent* healthComponent;
-	
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit);
+
 	// UPROPERTY(EditAnywhere,Category = "Combat")
 	// TSubclassOf<class AProjectile> ProjectileClass;
 

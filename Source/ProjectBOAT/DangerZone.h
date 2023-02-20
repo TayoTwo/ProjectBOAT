@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "PirateShip.h"
 #include "GameFramework/Actor.h"
 #include "DangerZone.generated.h"
 
@@ -22,5 +23,16 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+private:
+
+	void SpawnPirate();
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class APirateShip> pirate;
+	UPROPERTY(EditAnywhere)
+	float spawnRadius;
+	UPROPERTY(EditAnywhere)
+	float spawnCount;
+	//FTimerHandle spawnTimerHandler;
 
 };

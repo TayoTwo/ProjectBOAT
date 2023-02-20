@@ -3,6 +3,7 @@
 
 #include "PirateShip.h"
 #include "PlayerShip.h"
+#include "Dropbox.h"
 #include "PirateAIController.h"
 #include "Weapon.h"
 #include "Kismet/GameplayStatics.h"
@@ -103,3 +104,35 @@ void APirateShip::Fire(){
 //     UE_LOG(LogTemp, Display, TEXT("SOMETHING IS IN MY VISION"));
 
 // }
+
+void APirateShip::Die(){
+
+    //Spawn dropbox of items
+
+    if(dropbox != nullptr){
+
+        auto dropBoxActor = GetWorld()->SpawnActor<ADropbox>(dropbox,GetActorLocation(),GetActorRotation());
+        dropBoxActor->SetOwner(this);
+
+        for(int i = 0; i < inventoryComponent->items.Num();i++){
+
+		    dropBoxActor->items.Add(inventoryComponent->items[i]);
+
+        }
+
+	}
+
+    TArray<AActor*> actors;
+
+    GetAttachedActors(actors,false,true);
+
+    for(int i = 0; i < actors.Num();i++){
+
+        actors[i]->Destroy();
+
+    }
+
+
+    Destroy();
+
+}

@@ -27,12 +27,13 @@ public:
 	void AddItem(FItem item);
 	void AddItem(AWeapon* weaponActor);
 	void RemoveItem(FItem item);
+	UPROPERTY(EditAnywhere, Category = "Items")
+	TArray<FItem> items;
 
 private:
 
 	UPROPERTY(EditAnywhere, Category = "Items")
 	int maxInventorySize = 10;
-	UPROPERTY(EditAnywhere, Category = "Items")
-	TArray<FItem> items;
+
 
 };

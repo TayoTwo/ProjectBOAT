@@ -121,11 +121,23 @@ void APlayerShip::MoveToTarget(){
 
     if(distance > keepDriftingDistance && !bIsDrifting){
 
-        SetActorRotation(FMath::RInterpTo(GetActorRotation(),
+        SetActorRotation(FMath::RInterpTo(
+                        GetActorRotation(),
                         targetRotation,
                         UGameplayStatics::GetWorldDeltaSeconds(this),
-                        turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)));
+                        turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)
+                        ));
 
+        // SetRelativeRotation(FMath::RInterpTo(
+        //                 GetActorRotation(),
+        //                 targetRotation,
+        //                 UGameplayStatics::GetWorldDeltaSeconds(this),
+        //                 turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)
+        //                 ),
+        //                 true
+        //                 );
+
+        //AddActorWorldRotation();
     } else {
 
         bIsDrifting = true;
@@ -174,5 +186,23 @@ void APlayerShip::Fire(){
 
     }
 
+
+}
+
+void APlayerShip::Die(){
+
+    //Respawn
+
+    // TArray<AActor*> actors;
+
+    // GetAttachedActors(actors,false,true);
+
+    // for(int i = 0; i < actors.Num();i++){
+
+    //     actors[i]->Destroy();
+
+    // }
+
+    //Destroy();
 
 }

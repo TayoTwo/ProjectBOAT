@@ -2,6 +2,7 @@
 
 
 #include "HealthComponent.h"
+#include "BaseShip.h"
 
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
@@ -45,6 +46,7 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 		
 		UE_LOG(LogTemp, Display, TEXT("%s died!"),*GetOwner()->GetName());
 		//GetOwner()->Destroy();
+		Cast<ABaseShip>(GetOwner())->Die();
 
 	}
 

@@ -4,6 +4,7 @@
 #include "BaseShip.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Components/BoxComponent.h"
 #include "Weapon.h"
 #include "Target.h"
 
@@ -13,14 +14,14 @@ ABaseShip::ABaseShip()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	CapsuleComp = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Collider"));
-	RootComponent = CapsuleComp;
+	boxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Collision Component"));
+	RootComponent = boxComponent;
 
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base Mesh"));
-	BaseMesh->SetupAttachment(CapsuleComp);
+	BaseMesh->SetupAttachment(boxComponent);
 
 	weaponSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Weapon Spawn Point"));
-	weaponSpawnPoint->SetupAttachment(CapsuleComp);
+	weaponSpawnPoint->SetupAttachment(boxComponent);
 
 	inventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("Inventory Component"));
 	healthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
@@ -90,3 +91,13 @@ void ABaseShip::Fire(){
 
 }
 
+void ABaseShip::Die(){
+
+	UE_LOG(LogTemp, Display, TEXT("%s has DIED"),*GetName());
+
+}
+void ABaseShip::OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit){
+
+	UE_LOG(LogTemp, Display, TEXT("HIT SOMETHING"));
+
+}
