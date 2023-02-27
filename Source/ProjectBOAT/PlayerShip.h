@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BaseShip.h"
+#include "Item.h"
 #include "PlayerShip.generated.h"
 
 /**
@@ -22,6 +23,7 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Fire() override;
 	virtual void Die() override;
+	void EquipItem(UItem* item);
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

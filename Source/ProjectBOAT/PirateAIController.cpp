@@ -2,6 +2,8 @@
 
 
 #include "PirateAIController.h"
+#include "PatrolRoute.h"
+#include "Components/SplineComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "BehaviorTree/BlackboardComponent.h"
 
@@ -20,17 +22,20 @@ void APirateAIController::BeginPlay()
     Super::BeginPlay();
 
     ship = Cast<ABaseShip>(GetPawn());
+
     AttachToActor(ship,FAttachmentTransformRules::SnapToTargetIncludingScale,"");
     sightConfig->SightRadius = aggroRange;
+    sightConfig->PeripheralVisionAngleDegrees = 90.f;
 
     if(ship != nullptr){
 
         UE_LOG(LogTemp, Display, TEXT("Ship actor "),*ship->GetName());
+        patrolRouteActor = GetWorld()->SpawnActor<APatrolRoute>(patrolRoute,ship->GetActorLocation(),ship->GetActorRotation());
         SetupController();
 
     } else {
 
-        UE_LOG(LogTemp, Display, TEXT("SHIP IS NULL"));
+        UE_LOG(LogTemp, Display, TEXT("BEGIN PLAY SHIP IS NULL"));
 
     }
 
@@ -42,8 +47,11 @@ void APirateAIController::Tick(float DeltaSeconds){
 
     if(ship == nullptr){
 
-        UE_LOG(LogTemp, Display, TEXT("SHIP IS NULL"));
+        UE_LOG(LogTemp, Display, TEXT("TICK SHIP IS NULL"));
         ship = Cast<ABaseShip>(GetPawn());
+        patrolRouteActor = GetWorld()->SpawnActor<APatrolRoute>(patrolRoute,ship->GetActorLocation(),ship->GetActorRotation());
+        AttachToActor(ship,FAttachmentTransformRules::SnapToTargetIncludingScale,"");
+
         SetupController();
 
 
@@ -69,7 +77,7 @@ void APirateAIController::Tick(float DeltaSeconds){
         } else {
 
             //UE_LOG(LogTemp, Display, TEXT("PASSIVE"));
-            GetBlackboardComponent()->SetValueAsEnum("State",static_cast<int>(EPirateState::Passive));
+            GetBlackboardComponent()->SetValueAsEnum("State",static_cast<int>(EPirateState::Patroling));
 
         }
 
@@ -82,11 +90,14 @@ void APirateAIController::SetupController(){
 
     TargetPawn = UGameplayStatics::GetPlayerPawn(GetWorld(),0);
 
+    UE_LOG(LogTemp, Display, TEXT("SETTING UP CONTROLLER"));
+
     if(AIBehaviorTree != nullptr){
 
+
         RunBehaviorTree(AIBehaviorTree);
-        GetBlackboardComponent()->SetValueAsVector(TEXT("SpawnLocation"),ship->GetActorLocation());
-        //currentState = GetBlackboardComponent()->GetValueAsEnum("State");
+        GetBlackboardComponent()->SetValueAsVector("MoveTo",patrolRouteActor->splineComponent->GetLocationAtSplinePoint(0,ESplineCoordinateSpace::Type::World));
+        UE_LOG(LogTemp, Display, TEXT("CONTROLLER SET UP"));
 
     }
 

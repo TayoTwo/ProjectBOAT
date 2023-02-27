@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "InventoryComponent.h"
 #include "Port.generated.h"
 
 UCLASS()
@@ -22,5 +23,15 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	UInventoryComponent* inventoryComponent;
+
+private:
+
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* mesh;
+	UPROPERTY(EditAnywhere)
+	class UBoxComponent* triggerVolume;
+	UFUNCTION()
+	void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 };

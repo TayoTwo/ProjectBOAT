@@ -4,26 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Weapon.h"
+#include "Item.h"
 #include "Engine/DataAsset.h"
 #include "ItemData.generated.h"
 
 /**
  * 
  */
-
-USTRUCT()
-struct FItem {
-
-	GENERATED_USTRUCT_BODY()
-
-	UPROPERTY(EditAnywhere)
-	FString itemName;
-	UPROPERTY(EditAnywhere)
-	bool bIsWeapon;
-	UPROPERTY(EditAnywhere)
-	AWeapon* Weapon;
-
-};
 
 UCLASS()
 class PROJECTBOAT_API UItemData : public UPrimaryDataAsset
@@ -32,7 +19,7 @@ class PROJECTBOAT_API UItemData : public UPrimaryDataAsset
 
 public:
 
-	UPROPERTY(EditAnywhere, Category = "Items")
-	TArray<FItem> items;
+	// UPROPERTY(EditAnywhere, Category = "Items")
+	// TArray<UItem*> items;
 	
 };

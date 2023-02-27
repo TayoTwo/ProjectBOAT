@@ -3,6 +3,7 @@
 
 #include "InventoryComponent.h"
 #include "Weapon.h"
+#include "Item.h"
 
 // Sets default values for this component's properties
 UInventoryComponent::UInventoryComponent()
@@ -20,42 +21,42 @@ void UInventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
+	maxInventorySize = 10;
 	
 }
 
+bool UInventoryComponent::AddItem(UItem* item){
 
-// Called every frame
-void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	
+	if(items.Num() >= maxInventorySize || !item){
 
-	//UE_LOG(LogTemp, Display, TEXT("ITEM COUNT %d"),items.Num());
-	// ...
-}
+		UE_LOG(LogTemp, Display, TEXT("ITEM IS NULL"));
+		return false;
 
-void UInventoryComponent::AddItem(FItem item){
+	}
 
-	UE_LOG(LogTemp, Display, TEXT("ADDING %s to %s"),*item.itemName,*GetOwner()->GetName());
+	//UE_LOG(LogTemp, Display, TEXT("ADDING %s to %s"), *item->itemName, *GetOwner()->GetName());
+
+	item->ownerInventory  = this;
+	item->World = GetWorld();
 	items.Add(item);
+	OnInventoryUpdated.Broadcast();
 
+	return true;
 }
 
-void UInventoryComponent::AddItem(AWeapon* weaponActor)
-{
+bool UInventoryComponent::RemoveItem(UItem* item){
 
-	FItem weaponItem = {*weaponActor->GetName(),
-						true,
-						weaponActor
-						};
-	AddItem(weaponItem);
+	if(item){
 
-}
+		item->ownerInventory = nullptr;
+		item->World = nullptr;
+		items.RemoveSingle(item);
+		OnInventoryUpdated.Broadcast();
+		return true;
 
-void UInventoryComponent::RemoveItem(FItem item){
+	}
 
-	//items.Remove(item);
-	//items->RemoveSingle(item);
-	//items->Remove(item);
+	return false;
 
 }

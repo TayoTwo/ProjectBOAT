@@ -4,7 +4,7 @@
 		{
 			"name": "Launch ProjectBOAT (Debug)",
 			"request": "launch",
-			"program": "K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\Binaries\\Win64\\UnrealGame-Win64-Debug.exe",
+			"program": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Binaries\\Win64\\UnrealGame-Win64-Debug.exe",
 			"preLaunchTask": "ProjectBOAT Win64 Debug Build",
 			"args": [
 			],
@@ -20,7 +20,7 @@
 		{
 			"name": "Launch ProjectBOAT (DebugGame)",
 			"request": "launch",
-			"program": "K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\Binaries\\Win64\\UnrealGame-Win64-DebugGame.exe",
+			"program": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Binaries\\Win64\\UnrealGame-Win64-DebugGame.exe",
 			"preLaunchTask": "ProjectBOAT Win64 DebugGame Build",
 			"args": [
 			],
@@ -36,7 +36,7 @@
 		{
 			"name": "Launch ProjectBOAT (Development)",
 			"request": "launch",
-			"program": "K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\Binaries\\Win64\\UnrealGame.exe",
+			"program": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Binaries\\Win64\\UnrealGame.exe",
 			"preLaunchTask": "ProjectBOAT Win64 Development Build",
 			"args": [
 			],
@@ -52,7 +52,7 @@
 		{
 			"name": "Launch ProjectBOAT (Test)",
 			"request": "launch",
-			"program": "K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\Binaries\\Win64\\UnrealGame-Win64-Test.exe",
+			"program": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Binaries\\Win64\\UnrealGame-Win64-Test.exe",
 			"preLaunchTask": "ProjectBOAT Win64 Test Build",
 			"args": [
 			],
@@ -68,7 +68,7 @@
 		{
 			"name": "Launch ProjectBOAT (Shipping)",
 			"request": "launch",
-			"program": "K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\Binaries\\Win64\\UnrealGame-Win64-Shipping.exe",
+			"program": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Binaries\\Win64\\UnrealGame-Win64-Shipping.exe",
 			"preLaunchTask": "ProjectBOAT Win64 Shipping Build",
 			"args": [
 			],
@@ -87,7 +87,7 @@
 			"program": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-Debug.exe",
 			"preLaunchTask": "ProjectBOATEditor Win64 Debug Build",
 			"args": [
-				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject"
+				"C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject"
 			],
 			"cwd": "K:\\Installs\\Epic Games\\UE_5.1",
 			"stopAtEntry": false,
@@ -104,7 +104,7 @@
 			"program": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-DebugGame.exe",
 			"preLaunchTask": "ProjectBOATEditor Win64 DebugGame Build",
 			"args": [
-				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject"
+				"C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject"
 			],
 			"cwd": "K:\\Installs\\Epic Games\\UE_5.1",
 			"stopAtEntry": false,
@@ -121,7 +121,7 @@
 			"program": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
 			"preLaunchTask": "ProjectBOATEditor Win64 Development Build",
 			"args": [
-				"K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject"
+				"C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject"
 			],
 			"cwd": "K:\\Installs\\Epic Games\\UE_5.1",
 			"stopAtEntry": false,
@@ -140,7 +140,7 @@
 			"args": [
 				"-projectfiles",
 				"-vscode",
-				"-project=K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
+				"-project=C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\ProjectBOAT.uproject",
 				"-game",
 				"-engine"
 			],

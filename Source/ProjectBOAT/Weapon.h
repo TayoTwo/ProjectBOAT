@@ -15,13 +15,16 @@ public:
 	// Sets default values for this actor's properties
 	AWeapon();
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UItem> itemClass;
+
+	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class AProjectile> WeaponProjectile;
 	
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	class USceneComponent* ProjectileSpawnPoint;
 
-	UPROPERTY(EditAnywhere, Category = "Weapon Stats")
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon Stats")
 	float FireRate = 2.f;
 
 protected:

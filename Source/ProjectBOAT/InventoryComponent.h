@@ -3,10 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ItemData.h"
+#include "Item.h"
 #include "Components/ActorComponent.h"
 #include "InventoryComponent.generated.h"
 
+//DELEGATE FOR UI BLUEPRINTS
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInventoryUpdated);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class PROJECTBOAT_API UInventoryComponent : public UActorComponent
@@ -23,17 +25,17 @@ protected:
 
 public:	
 	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	void AddItem(FItem item);
-	void AddItem(AWeapon* weaponActor);
-	void RemoveItem(FItem item);
-	UPROPERTY(EditAnywhere, Category = "Items")
-	TArray<FItem> items;
+	bool AddItem(UItem* item);
+	bool RemoveItem(UItem* item);
 
-private:
+	UPROPERTY(BlueprintAssignable)
+	FOnInventoryUpdated OnInventoryUpdated;
 
-	UPROPERTY(EditAnywhere, Category = "Items")
-	int maxInventorySize = 10;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Items")
+	TArray<class UItem*> items;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Items")
+	int maxInventorySize;
 
 
 };

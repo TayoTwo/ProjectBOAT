@@ -40,12 +40,18 @@ void UBTTShootTarget::TickTask(UBehaviorTreeComponent &OwnerComp, uint8 *NodeMem
 
         ship->TurnWeapon(targetPosition);
 
-        // if(distance > AcceptableRadius){
+        if(distance >= AcceptableRadius){
 
-        //     FinishLatentTask(OwnerComp, EBTNodeResult::Aborted);
-        //     UE_LOG(LogTemp, Display, TEXT("SHOOT ABORTED"));
+            if(ship != nullptr){
 
-        // }
+                ship->GetWorldTimerManager().ClearTimer(ship->FireRateTimerHandle);
+
+            }
+
+            FinishLatentTask(OwnerComp, EBTNodeResult::Aborted);
+            UE_LOG(LogTemp, Display, TEXT("SHOOT ABORTED"));
+
+        }
 
     }
 

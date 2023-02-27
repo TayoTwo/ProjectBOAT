@@ -1,5 +1,5 @@
 /FI "K:\Installs\Epic Games\UE_5.1\Engine\Plugins\Media\ImgMedia\Intermediate\Build\Win64\UnrealEditor\Development\ExrReaderGpu\Definitions.ExrReaderGpu.h" 
-/FI "K:\Documents\GitHub\Unreal Projects\ProjectBOAT\Intermediate\Build\Win64\ProjectBOATEditor\Development\Engine\SharedPCH.Engine.RTTI.ShadowErrors.h" 
+/FI "C:\Documents\Github\Unreal Projects\ProjectBOAT\Intermediate\Build\Win64\ProjectBOATEditor\Development\Engine\SharedPCH.Engine.RTTI.ShadowErrors.h" 
 /I "K:\Installs\Epic Games\UE_5.1\Engine\Source" 
 /I "K:\Installs\Epic Games\UE_5.1\Engine\Plugins\Media\ImgMedia\Source\ExrReaderGpu\Private" 
 /I "K:\Installs\Epic Games\UE_5.1\Engine\Plugins\Media\ImgMedia\Intermediate\Build\Win64\UnrealEditor\Inc\OpenExrWrapper\UHT" 

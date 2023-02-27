@@ -1,5 +1,5 @@
 /FI "K:\Installs\Epic Games\UE_5.1\Engine\Plugins\Runtime\Metasound\Intermediate\Build\Win64\UnrealEditor\Development\MetasoundGraphCore\Definitions.MetasoundGraphCore.h" 
-/FI "K:\Documents\GitHub\Unreal Projects\ProjectBOAT\Intermediate\Build\Win64\ProjectBOATEditor\Development\Core\SharedPCH.Core.ShadowErrors.h" 
+/FI "C:\Documents\Github\Unreal Projects\ProjectBOAT\Intermediate\Build\Win64\ProjectBOATEditor\Development\Core\SharedPCH.Core.ShadowErrors.h" 
 /I "K:\Installs\Epic Games\UE_5.1\Engine\Source" 
 /I "K:\Installs\Epic Games\UE_5.1\Engine\Plugins\Runtime\Metasound\Source\MetasoundGraphCore\Private" 
 /I "K:\Installs\Epic Games\UE_5.1\Engine\Plugins\Runtime\Metasound\Intermediate\Build\Win64\UnrealEditor\Inc\MetasoundGraphCore\UHT" 

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ItemData.h"
+#include "Item.h"
 #include "GameFramework/Actor.h"
 #include "Dropbox.generated.h"
 
@@ -25,7 +25,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	void DropItems(class UInventoryComponent* inventory);
 	UPROPERTY(EditAnywhere)
-	TArray<FItem> items;
+	TArray<UItem*> items;
 
 private:
 

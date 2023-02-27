@@ -44,7 +44,7 @@ void ABaseShip::BeginPlay(){
 
         weaponActor->SetActorLocation(weaponSpawnPoint->GetComponentLocation());
 
-		inventoryComponent->AddItem(Cast<AWeapon>(weaponActor));
+		inventoryComponent->AddItem(Cast<UItem>(weaponActor->itemClass));
 
     }
 

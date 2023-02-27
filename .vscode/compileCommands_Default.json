@@ -1,25 +1,329 @@
 [
 	{
-		"file": "K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\ProjectBOAT.Build.cs",
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\BTTMoveToSpawnLocation.cpp",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
-			"@K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
 		],
 		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
 	},
 	{
-		"file": "K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\ProjectBOAT.cpp",
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\BTTMoveToSpawnLocation.h",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
-			"@K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
 		],
 		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
 	},
 	{
-		"file": "K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\ProjectBOAT.h",
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\BTTMoveToTarget.cpp",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
-			"@K:\\Documents\\GitHub\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\BTTMoveToTarget.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\BTTShootTarget.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\BTTShootTarget.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\BTTUpdatePatrolIndex.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\BTTUpdatePatrolIndex.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\BaseShip.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\BaseShip.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\DangerZone.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\DangerZone.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Dropbox.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Dropbox.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\HealthComponent.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\HealthComponent.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\InventoryComponent.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\InventoryComponent.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Item.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Item.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\ItemData.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\ItemData.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\PatrolRoute.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\PatrolRoute.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\PirateAIController.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\PirateAIController.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\PirateShip.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\PirateShip.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\PlayerShip.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\PlayerShip.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Port.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Port.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\ProjectBOAT.Build.cs",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\ProjectBOAT.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\ProjectBOAT.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Projectile.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Projectile.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Target.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Target.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Weapon.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\Weapon.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_Default\\ProjectBOAT.255.rsp"
 		],
 		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
 	}

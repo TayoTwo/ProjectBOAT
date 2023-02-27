@@ -11,7 +11,7 @@
 
 UENUM(BlueprintType)
 enum class EPirateState : uint8 {
-    Passive       UMETA(DisplayName="Passive"),
+    Patroling       UMETA(DisplayName="Patroling"),
     Chasing       UMETA(DisplayName="Chasing"),
     Attacking     UMETA(DisplayName="Attacking")
 };
@@ -29,9 +29,13 @@ public:
 	UPROPERTY(EditAnywhere)
 	ABaseShip* ship;
 	APawn* TargetPawn;
-	UPROPERTY(EditAnywhere, Category = "Pirate Stats")
+	UPROPERTY(EditAnywhere, Category = "AI")
+	TSubclassOf<class APatrolRoute> patrolRoute;
+	class APatrolRoute* patrolRouteActor;
+
+	UPROPERTY(EditAnywhere, Category = "AI")
 	float aggroRange;
-	UPROPERTY(EditAnywhere, Category = "Pirate Stats")
+	UPROPERTY(EditAnywhere, Category = "AI")
 	float shootRange;
 
 protected:

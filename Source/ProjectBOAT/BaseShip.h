@@ -40,7 +40,7 @@ public:
 	FTimerHandle FireRateTimerHandle;
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class ADropbox> dropbox;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	class UInventoryComponent* inventoryComponent;
 	
 

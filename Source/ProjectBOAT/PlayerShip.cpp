@@ -206,3 +206,9 @@ void APlayerShip::Die(){
     //Destroy();
 
 }
+
+void APlayerShip::EquipItem(UItem* item){
+
+    //UE_LOG(LogTemp, Display, TEXT("Equiping a %s"),item->itemName);
+
+}
