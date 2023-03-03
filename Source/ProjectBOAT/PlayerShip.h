@@ -35,6 +35,7 @@ public:
 	UPROPERTY(EditAnywhere)
 	float keepDriftingDistance = 100.f;
 	bool bIsDrifting = false;
+	FVector spawnPos;
 	
 	APlayerController* PlayerController;
 

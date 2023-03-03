@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "PirateShip.h"
+#include "PlayerShip.h"
 #include "GameFramework/Actor.h"
 #include "DangerZone.generated.h"
 
@@ -26,13 +27,15 @@ public:
 
 private:
 
-	void SpawnPirate();
+	APlayerShip* player;
+	void SpawnPirates();
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class APirateShip> pirate;
 	UPROPERTY(EditAnywhere)
 	float spawnRadius;
 	UPROPERTY(EditAnywhere)
 	float spawnCount;
+	bool bSpawnedPirates;
 	//FTimerHandle spawnTimerHandler;
 
 };

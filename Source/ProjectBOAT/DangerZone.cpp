@@ -2,6 +2,7 @@
 
 
 #include "DangerZone.h"
+#include "PlayerShip.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -12,11 +13,19 @@ ADangerZone::ADangerZone()
 
 }
 
-void ADangerZone::SpawnPirate(){
+void ADangerZone::SpawnPirates(){
 
-	FVector spawnPos = FVector(FMath::RandRange(-spawnRadius, spawnRadius),FMath::RandRange(-spawnRadius, spawnRadius),0); 
-	FRotator spawnRot = FRotator(0,FMath::RandRange(0,360),0);
-	GetWorld()->SpawnActor<APirateShip>(pirate,spawnPos,spawnRot);
+	UE_LOG(LogTemp, Display, TEXT("SPAWNING PIRATES "));
+	
+	for(int i = 0;i < spawnCount;i++){
+
+		FVector spawnPos = FVector(FMath::RandRange(-spawnRadius, spawnRadius),FMath::RandRange(-spawnRadius, spawnRadius),0); 
+		FRotator spawnRot = FRotator(0,FMath::RandRange(0,360),0);
+		GetWorld()->SpawnActor<APirateShip>(pirate,spawnPos,spawnRot);
+
+	}
+
+	bSpawnedPirates = true;
 
 }
 
@@ -25,17 +34,9 @@ void ADangerZone::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if(pirate != nullptr){
+	player = Cast<APlayerShip>(UGameplayStatics::GetPlayerPawn(this,0));
 
-		//GetWorldTimerManager().SetTimer(spawnTimerHandler,this, &ADangerZone::SpawnPirate,weaponActor->FireRate,true);
-
-	}
-
-	for(int i = 0;i < spawnCount;i++){
-
-		SpawnPirate();
-
-	}
+	//SpawnPirates();
 	
 }
 
@@ -43,6 +44,23 @@ void ADangerZone::BeginPlay()
 void ADangerZone::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (player != nullptr) {
+
+		float distance = FVector::Distance(player->GetActorLocation(), GetActorLocation());
+
+		if (distance <= spawnRadius && !bSpawnedPirates) {
+
+			SpawnPirates();
+
+		}
+
+	} else {
+
+		//UE_LOG(LogTemp, Display, TEXT("CASTING PLAYER IN TICK"));
+		player = Cast<APlayerShip>(UGameplayStatics::GetPlayerPawn(this, 0));
+
+	}
 
 	DrawDebugSphere(GetWorld(),
                     GetActorLocation(),

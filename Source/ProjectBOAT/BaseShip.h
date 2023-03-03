@@ -32,8 +32,7 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	class USceneComponent* weaponSpawnPoint;
-	UPROPERTY(EditAnywhere)
-	class UBoxComponent* boxComponent;
+
 	virtual void Fire();
 	virtual void Die();
 	class AActor* targetActor;
@@ -61,9 +60,10 @@ protected:
 
 private:
 
-	UPROPERTY(VisibleAnywhere)
-	class UCapsuleComponent* CapsuleComp;
-
+	UPROPERTY(EditAnywhere)
+	class UBoxComponent* boxComponent;
+	UPROPERTY(EditAnywhere)
+	class USceneComponent* root;
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* BaseMesh;
 

@@ -45,6 +45,8 @@ void APlayerShip::BeginPlay()
         PlayerController = Cast<APlayerController>(GetController());
 
     }
+
+    spawnPos = GetActorLocation();
 	
 }
 
@@ -192,6 +194,25 @@ void APlayerShip::Fire(){
 void APlayerShip::Die(){
 
     //Respawn
+
+    FVector diePos = GetActorLocation();
+    
+    SetActorLocation(spawnPos);
+
+    if(dropbox != nullptr){
+
+        auto dropBoxActor = GetWorld()->SpawnActor<ADropbox>(dropbox,diePos,GetActorRotation());
+        dropBoxActor->SetOwner(this);
+
+        for(int i = 0; i < inventoryComponent->items.Num();i++){
+
+		    dropBoxActor->items.Add(inventoryComponent->items[i]);
+
+        }
+
+	}
+
+    inventoryComponent->items.Empty();
 
     // TArray<AActor*> actors;
 

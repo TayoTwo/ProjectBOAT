@@ -40,7 +40,7 @@ void UBTTShootTarget::TickTask(UBehaviorTreeComponent &OwnerComp, uint8 *NodeMem
 
         ship->TurnWeapon(targetPosition);
 
-        if(distance >= AcceptableRadius){
+        if(distance >= controller->shootRange){
 
             if(ship != nullptr){
 

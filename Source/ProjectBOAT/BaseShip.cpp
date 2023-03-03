@@ -14,14 +14,16 @@ ABaseShip::ABaseShip()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	root = CreateDefaultSubobject<USceneComponent>(TEXT("Scene Component"));
+	RootComponent = root;
 	boxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Collision Component"));
-	RootComponent = boxComponent;
+	boxComponent->SetupAttachment(root);
 
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base Mesh"));
-	BaseMesh->SetupAttachment(boxComponent);
+	BaseMesh->SetupAttachment(root);
 
 	weaponSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Weapon Spawn Point"));
-	weaponSpawnPoint->SetupAttachment(boxComponent);
+	weaponSpawnPoint->SetupAttachment(root);
 
 	inventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("Inventory Component"));
 	healthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
