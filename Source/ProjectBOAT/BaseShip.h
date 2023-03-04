@@ -72,6 +72,10 @@ private:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit);
 
+	UPROPERTY(EditDefaultsOnly)
+	class USoundBase* fireClip;
+
+	int spawnIndex;
 	// UPROPERTY(EditAnywhere,Category = "Combat")
 	// TSubclassOf<class AProjectile> ProjectileClass;
 

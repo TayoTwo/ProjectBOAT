@@ -28,13 +28,15 @@ public:
 private:
 
 	APlayerShip* player;
-	void SpawnPirates();
+	void SpawnPirate();
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class APirateShip> pirate;
 	UPROPERTY(EditAnywhere)
 	float spawnRadius;
 	UPROPERTY(EditAnywhere)
-	float spawnCount;
+	float spawnCount = 0;
+
+	int spawnIndex;
 	bool bSpawnedPirates;
 	//FTimerHandle spawnTimerHandler;
 

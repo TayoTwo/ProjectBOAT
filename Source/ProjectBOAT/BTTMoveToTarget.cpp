@@ -37,7 +37,9 @@ void UBTTMoveToTarget::TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMe
         UBlackboardComponent* blackBoard = controller->GetBlackboardComponent(); 
 
         FVector targetPosition = blackBoard->GetValueAsVector("MoveTo");
+
         float distance = FVector::Distance(ship->GetActorLocation(),targetPosition);
+
         FVector targetDir = targetPosition - ship->GetActorLocation();
         targetDir.Z = 0;
         FRotator targetRotation = targetDir.ToOrientationRotator();
@@ -46,12 +48,12 @@ void UBTTMoveToTarget::TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMe
                             ship->GetActorRotation(),
                             targetRotation,
                             UGameplayStatics::GetWorldDeltaSeconds(this),
-                            ship->turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)
+                            ship->turnSpeed * 0.02f
                              ));
 
 
         FVector moveDir = FVector::ZeroVector;
-        moveDir.X = ship->moveSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
+        moveDir.X = ship->moveSpeed * 0.02f;
 
         ship->AddActorLocalOffset(moveDir,true);
 

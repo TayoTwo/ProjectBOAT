@@ -6,6 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Components/BoxComponent.h"
 #include "Weapon.h"
+#include "Sound/SoundBase.h"
 #include "Target.h"
 
 // Sets default values
@@ -75,6 +76,12 @@ void ABaseShip::TurnWeapon(FVector targetLocation){
 void ABaseShip::Fire(){
 
 	//UE_LOG(LogTemp, Display, TEXT("FIRE!"));
+
+	if(fireClip){
+
+		UGameplayStatics::PlaySoundAtLocation(this,fireClip,GetActorLocation());
+
+	}
 	
 	if(weaponActor){
 

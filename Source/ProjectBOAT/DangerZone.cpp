@@ -13,19 +13,22 @@ ADangerZone::ADangerZone()
 
 }
 
-void ADangerZone::SpawnPirates(){
+void ADangerZone::SpawnPirate(){
 
-	UE_LOG(LogTemp, Display, TEXT("SPAWNING PIRATES "));
+	UE_LOG(LogTemp, Display, TEXT("SPAWNING PIRATE"));
 	
-	for(int i = 0;i < spawnCount;i++){
+	FVector spawnPos = FVector(FMath::RandRange(-spawnRadius, spawnRadius),FMath::RandRange(-spawnRadius, spawnRadius),0); 
+	FRotator spawnRot = FRotator(0,FMath::RandRange(0,360),0);
+	GetWorld()->SpawnActor<APirateShip>(pirate,spawnPos + GetActorLocation(),spawnRot);
 
-		FVector spawnPos = FVector(FMath::RandRange(-spawnRadius, spawnRadius),FMath::RandRange(-spawnRadius, spawnRadius),0); 
-		FRotator spawnRot = FRotator(0,FMath::RandRange(0,360),0);
-		GetWorld()->SpawnActor<APirateShip>(pirate,spawnPos,spawnRot);
+	spawnIndex++;
+
+	if(spawnIndex >= spawnCount){
+
+		bSpawnedPirates = true;
 
 	}
 
-	bSpawnedPirates = true;
 
 }
 
@@ -51,7 +54,7 @@ void ADangerZone::Tick(float DeltaTime)
 
 		if (distance <= spawnRadius && !bSpawnedPirates) {
 
-			SpawnPirates();
+			SpawnPirate();
 
 		}
 
