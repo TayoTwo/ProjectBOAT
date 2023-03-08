@@ -25,10 +25,7 @@ public:
 	virtual void Die() override;
 	void EquipItem(UItem* item);
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	void MoveVertical(float value);
-	void MoveHorizontal(float value);
+
 	void SetTarget();
 	void MoveToTarget();
 
@@ -41,10 +38,19 @@ public:
 
 private:
 
-	UPROPERTY(EditAnywhere,Category = "Components")
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	void MoveVertical(float value);
+	void MoveHorizontal(float value);
+	void StopMovement();
+	void ShowInventory();
+
+	UPROPERTY(EditDefaultsOnly,Category = "Components")
 	class USpringArmComponent* springArm;
-	UPROPERTY(EditAnywhere,Category = "Components")
+	UPROPERTY(EditDefaultsOnly,Category = "Components")
 	class UCameraComponent* camera;
+	//UPROPERTY(EditDefaultsOnly,Category = "UI")
+	//TSubclassOf<class UUserWidget> inventoryWidget;
 
 	
 };

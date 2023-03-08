@@ -28,14 +28,14 @@ void UInventoryComponent::BeginPlay()
 bool UInventoryComponent::AddItem(UItem* item){
 
 	
-	if(items.Num() >= maxInventorySize || !item){
+	if(items.Num() >= maxInventorySize || item == nullptr){
 
 		UE_LOG(LogTemp, Display, TEXT("ITEM IS NULL"));
 		return false;
 
 	}
 
-	//UE_LOG(LogTemp, Display, TEXT("ADDING %s to %s"), *item->itemName, *GetOwner()->GetName());
+	UE_LOG(LogTemp, Display, TEXT("ADDING %s to %s"), *item->itemDisplayName.ToString(), *GetOwner()->GetName());
 
 	item->ownerInventory  = this;
 	item->World = GetWorld();

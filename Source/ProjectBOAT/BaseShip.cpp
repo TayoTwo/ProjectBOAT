@@ -8,6 +8,7 @@
 #include "Weapon.h"
 #include "Sound/SoundBase.h"
 #include "Target.h"
+#include "Item.h"
 
 // Sets default values
 ABaseShip::ABaseShip()
@@ -15,16 +16,16 @@ ABaseShip::ABaseShip()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	root = CreateDefaultSubobject<USceneComponent>(TEXT("Scene Component"));
-	RootComponent = root;
+	// root = CreateDefaultSubobject<USceneComponent>(TEXT("Scene Component"));
+	// RootComponent = root;
 	boxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Collision Component"));
-	boxComponent->SetupAttachment(root);
+	RootComponent = boxComponent;
 
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base Mesh"));
-	BaseMesh->SetupAttachment(root);
+	BaseMesh->SetupAttachment(boxComponent);
 
 	weaponSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Weapon Spawn Point"));
-	weaponSpawnPoint->SetupAttachment(root);
+	weaponSpawnPoint->SetupAttachment(boxComponent);
 
 	inventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("Inventory Component"));
 	healthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
@@ -39,7 +40,7 @@ void ABaseShip::BeginPlay(){
 
     if(!weaponActor){
 
-		//UE_LOG(LogTemp, Display, TEXT("SPAWNING WEAPON"));
+		UE_LOG(LogTemp, Display, TEXT("SPAWNING WEAPON"));
 
         weaponActor = GetWorld()->SpawnActor<AWeapon>(currentWeapon,weaponSpawnPoint->GetComponentLocation(),weaponSpawnPoint->GetComponentRotation());
 
@@ -47,7 +48,16 @@ void ABaseShip::BeginPlay(){
 
         weaponActor->SetActorLocation(weaponSpawnPoint->GetComponentLocation());
 
-		inventoryComponent->AddItem(Cast<UItem>(weaponActor->itemClass));
+		//UItem* weaponItem = Cast<AWeapon>(*currentWeapon)->itemClass;
+		UItem* weaponItem = weaponActor->itemClass;
+
+		if(!weaponItem){
+
+			UE_LOG(LogTemp, Display, TEXT("CASTING FAILED"));
+
+		}
+
+		inventoryComponent->AddItem(weaponItem);
 
     }
 
@@ -75,7 +85,6 @@ void ABaseShip::TurnWeapon(FVector targetLocation){
 
 void ABaseShip::Fire(){
 
-	//UE_LOG(LogTemp, Display, TEXT("FIRE!"));
 
 	if(fireClip){
 
@@ -88,8 +97,12 @@ void ABaseShip::Fire(){
 		FVector projectileSpawnLocation = weaponActor->ProjectileSpawnPoint->GetComponentLocation();
 		FRotator projectileSpawnRotation = weaponActor->ProjectileSpawnPoint->GetComponentRotation();
 		FString locationString = projectileSpawnLocation.ToString();
+		FActorSpawnParameters SpawnInfo; 
+		SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn; // Forces the pawn to spawn even if colliding
 
-		auto Projectile = GetWorld()->SpawnActor<AProjectile>(weaponActor->WeaponProjectile,projectileSpawnLocation,projectileSpawnRotation);
+		//UE_LOG(LogTemp, Display, TEXT("Trying to spawn projectile"));
+
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(weaponActor->WeaponProjectile,projectileSpawnLocation,projectileSpawnRotation,SpawnInfo);
 		Projectile->SetOwner(this);
 
 	} else {

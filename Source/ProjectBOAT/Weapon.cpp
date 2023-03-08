@@ -17,6 +17,12 @@ AWeapon::AWeapon()
 
 }
 
+// UItem* AWeapon::GetItemClass(){
+
+// 	return itemClass;
+
+// }
+
 // Called when the game starts or when spawned
 void AWeapon::BeginPlay()
 {

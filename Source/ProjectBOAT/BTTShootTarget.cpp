@@ -49,7 +49,7 @@ void UBTTShootTarget::TickTask(UBehaviorTreeComponent &OwnerComp, uint8 *NodeMem
             }
 
             FinishLatentTask(OwnerComp, EBTNodeResult::Aborted);
-            UE_LOG(LogTemp, Display, TEXT("SHOOT ABORTED"));
+            //UE_LOG(LogTemp, Display, TEXT("SHOOT ABORTED"));
 
         }
 

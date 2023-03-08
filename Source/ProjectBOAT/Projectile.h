@@ -37,6 +37,9 @@ private:
 	float TrackingStrength = 1000.f;
 
 	UPROPERTY(EditDefaultsOnly)
+	class USphereComponent* sphereComponent;
+
+	UPROPERTY(EditDefaultsOnly)
 	class UStaticMeshComponent* projectileMesh;
 
 	UPROPERTY(VisibleAnywhere)

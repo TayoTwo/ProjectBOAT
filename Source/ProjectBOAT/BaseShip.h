@@ -41,6 +41,8 @@ public:
 	TSubclassOf<class ADropbox> dropbox;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	class UInventoryComponent* inventoryComponent;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	class UHealthComponent* healthComponent;
 	
 
 protected:
@@ -49,7 +51,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditAnywhere)
-	class TSubclassOf<class AWeapon> currentWeapon;
+	TSubclassOf<class AWeapon> currentWeapon;
 
 	UPROPERTY(VisibleAnywhere,Category = "MoveTo")
 	bool isMovingToTarget = false;
@@ -62,13 +64,12 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	class UBoxComponent* boxComponent;
-	UPROPERTY(EditAnywhere)
-	class USceneComponent* root;
+	// UPROPERTY(EditAnywhere)
+	// class USceneComponent* root;
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* BaseMesh;
 
-	UPROPERTY(EditAnywhere)
-	class UHealthComponent* healthComponent;
+
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit);
 

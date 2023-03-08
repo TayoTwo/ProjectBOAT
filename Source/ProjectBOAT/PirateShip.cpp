@@ -74,18 +74,22 @@ void APirateShip::CheckFireCondition(){
         //UE_LOG(LogTemp, Display, TEXT("FIRE"));
         Fire();
 
+    } else {
+
+        GetWorldTimerManager().ClearTimer(FireRateTimerHandle);
+
     }
 
 }
 
 bool APirateShip::CanFire(){
 
-    // if(playerShip){
+    if(playerShip && controller){
 
-    //     float distance = FVector::Dist(GetActorLocation(),playerShip->GetActorLocation());
+        float distance = FVector::Dist(GetActorLocation(),playerShip->GetActorLocation());
 
-    //     return (distance <= shootRange);
-    // }
+        return (distance <= controller->shootRange);
+    }
 
     return false;
 }

@@ -62,13 +62,13 @@ void APirateAIController::Tick(float DeltaSeconds){
         float disToTarget = FVector::Distance(TargetPawn->GetActorLocation(),ship->GetActorLocation());
 
         //CHANGE THIS TO PERCEPTION COMPONENT 
-        if(LineOfSightTo(TargetPawn) && disToTarget < aggroRange && disToTarget > shootRange){
+        if(disToTarget < aggroRange && disToTarget > shootRange){
 
             //UE_LOG(LogTemp, Display, TEXT("CHASING"));
             GetBlackboardComponent()->SetValueAsVector("MoveTo",TargetPawn->GetActorLocation());
             GetBlackboardComponent()->SetValueAsEnum("State",static_cast<int>(EPirateState::Chasing));
 
-        } else if(LineOfSightTo(TargetPawn) && disToTarget <= shootRange){
+        } else if(disToTarget <= shootRange){
 
             //UE_LOG(LogTemp, Display, TEXT("ATTACKING"));
             GetBlackboardComponent()->SetValueAsVector("ShootTarget",TargetPawn->GetActorLocation());

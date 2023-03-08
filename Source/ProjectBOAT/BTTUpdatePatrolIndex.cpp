@@ -12,7 +12,7 @@ EBTNodeResult::Type UBTTUpdatePatrolIndex::ExecuteTask(UBehaviorTreeComponent &O
     Super::ExecuteTask(OwnerComp,NodeMemory);
     //get AI controller and its NPC
 
-    UE_LOG(LogTemp, Display, TEXT("TASK EXECUTING"));
+    //UE_LOG(LogTemp, Display, TEXT("TASK EXECUTING"));
     //bNotifyTick = true;
     controller = Cast<APirateAIController>(OwnerComp.GetAIOwner());
 

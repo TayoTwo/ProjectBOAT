@@ -21,6 +21,7 @@ EBTNodeResult::Type UBTTMoveToTarget::ExecuteTask(UBehaviorTreeComponent &OwnerC
     bNotifyTick = true;
     controller = Cast<APirateAIController>(OwnerComp.GetAIOwner());
     ship = controller->ship;
+    //AcceptableRadius = controller->shootRange;
 
     return EBTNodeResult::Type::InProgress;
 
@@ -33,6 +34,8 @@ void UBTTMoveToTarget::TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMe
     //UE_LOG(LogTemp, Display, TEXT("TASK TICKING"));
 
     if(ship != nullptr){
+
+        //UE_LOG(LogTemp, Display, TEXT("TASK MOVING"));
 
         UBlackboardComponent* blackBoard = controller->GetBlackboardComponent(); 
 
@@ -48,7 +51,7 @@ void UBTTMoveToTarget::TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMe
                             ship->GetActorRotation(),
                             targetRotation,
                             UGameplayStatics::GetWorldDeltaSeconds(this),
-                            ship->turnSpeed * 0.02f
+                            ship->turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)
                              ));
 
 

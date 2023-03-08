@@ -9,6 +9,9 @@
 #include "Weapon.h"
 #include "Target.h"
 
+//#include "Blueprint/UserWidget.h" Apparently this is an intellisense issue
+//#include "Runtime/UMG/Public/Blueprint/UserWidget.h";
+
 APlayerShip::APlayerShip(){
 
     springArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
@@ -28,11 +31,11 @@ void APlayerShip::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
     PlayerInputComponent->BindAxis(TEXT("Horizontal"),this,&APlayerShip::MoveHorizontal);
 
-    PlayerInputComponent->BindAction(TEXT("LMB"),IE_Pressed,this,&APlayerShip::Fire);
-
+    PlayerInputComponent->BindAction(TEXT("LMB"),IE_Pressed,this,&ABaseShip::Fire);
     PlayerInputComponent->BindAction(TEXT("RMB"),IE_Pressed,this,&APlayerShip::SetTarget);
+    PlayerInputComponent->BindAction(TEXT("Space"),IE_Pressed,this,&APlayerShip::StopMovement);
 
-    //PlayerInputComponent->BindAction(TEXT("RMB"),IE_Repeat,this,&APlayerShip::SetTarget);
+    PlayerInputComponent->BindAction(TEXT("Tab"),IE_Pressed,this,&APlayerShip::ShowInventory);
 
 }
 
@@ -40,11 +43,15 @@ void APlayerShip::BeginPlay()
 {
 	Super::BeginPlay();
 
-    if(!PlayerController){
+    if(PlayerController == nullptr){
 
         PlayerController = Cast<APlayerController>(GetController());
 
     }
+
+    PlayerController->bShowMouseCursor = true; 
+    PlayerController->bEnableClickEvents = true; 
+    PlayerController->bEnableMouseOverEvents = true;
 
     spawnPos = GetActorLocation();
 	
@@ -80,12 +87,34 @@ void APlayerShip::Tick(float DeltaTime){
 
 }
 
+//Check to see if the inventory widget is set than add it to our viewport
+void APlayerShip::ShowInventory(){
+
+    UE_LOG(LogTemp, Warning, TEXT("Show inventory pressed"));
+
+    // if(inventoryWidget){
+
+    //     // UUserWidget* widget = CreateWidget<UUserWidget>(PlayerController,inventoryWidget,TEXT("Inventory"));
+    //     // widget->AddToViewport();
+
+    // }
+
+}
+
+void APlayerShip::StopMovement(){
+
+    isMovingToTarget = false;
+
+}
+
 void APlayerShip::MoveVertical(float value){
 
     //(LogTemp, Warning, TEXT("Vertical Dir: %f"),value);
 
     FVector moveDir = FVector::ZeroVector;
     moveDir.X = value * moveSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
+
+    //UE_LOG(LogTemp, Warning, TEXT("MOVE DIR %d"),moveDir.X);
 
 	AddActorLocalOffset(moveDir,true);
 
@@ -154,6 +183,8 @@ void APlayerShip::SetTarget(){
 
     if(PlayerController){
 
+        UE_LOG(LogTemp, Display, TEXT("SETTING TARGET"));
+
         FHitResult hitResult;
         PlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,false, hitResult);
 
@@ -175,24 +206,26 @@ void APlayerShip::SetTarget(){
 
 void APlayerShip::Fire(){
 
+	UE_LOG(LogTemp, Display, TEXT("FIRE!"));
+
     Super::Fire();
 
-    if(PlayerController){
+    // if(PlayerController){
 
-        FHitResult hitResult;
-        PlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,false, hitResult);
-	    // EnemyTarget = Cast<AActor>(GetWorld()->SpawnActor<ATarget>(
-        //     hitResult.ImpactPoint,
-        //     GetActorRotation()
-        //     ));
+    //     FHitResult hitResult;
+    //     PlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,false, hitResult);
+	//     // EnemyTarget = Cast<AActor>(GetWorld()->SpawnActor<ATarget>(
+    //     //     hitResult.ImpactPoint,
+    //     //     GetActorRotation()
+    //     //     ));
 
-    }
-
+    // }
 
 }
 
 void APlayerShip::Die(){
 
+    Super::Die();
     //Respawn
 
     FVector diePos = GetActorLocation();
@@ -213,6 +246,9 @@ void APlayerShip::Die(){
 	}
 
     inventoryComponent->items.Empty();
+    healthComponent->Health = healthComponent->MaxHealth;
+
+    UE_LOG(LogTemp, Display,TEXT("PLAYER DIED"));
 
     // TArray<AActor*> actors;
 

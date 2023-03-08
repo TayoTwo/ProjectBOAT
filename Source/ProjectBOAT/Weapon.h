@@ -15,8 +15,9 @@ public:
 	// Sets default values for this actor's properties
 	AWeapon();
 
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<class UItem> itemClass;
+	UPROPERTY(Instanced,EditAnywhere)
+	class UItem* itemClass;
+	//UItem* GetItemClass();
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class AProjectile> WeaponProjectile;

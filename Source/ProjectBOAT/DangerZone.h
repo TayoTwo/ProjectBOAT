@@ -37,7 +37,7 @@ private:
 	float spawnCount = 0;
 
 	int spawnIndex;
-	bool bSpawnedPirates;
+	bool bSpawnedPirates = false;
 	//FTimerHandle spawnTimerHandler;
 
 };

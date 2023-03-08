@@ -40,6 +40,12 @@ void ADangerZone::BeginPlay()
 	player = Cast<APlayerShip>(UGameplayStatics::GetPlayerPawn(this,0));
 
 	//SpawnPirates();
+
+	while(!bSpawnedPirates){
+
+		SpawnPirate();
+
+	}
 	
 }
 
@@ -50,13 +56,13 @@ void ADangerZone::Tick(float DeltaTime)
 
 	if (player != nullptr) {
 
-		float distance = FVector::Distance(player->GetActorLocation(), GetActorLocation());
+		// float distance = FVector::Distance(player->GetActorLocation(), GetActorLocation());
 
-		if (distance <= spawnRadius && !bSpawnedPirates) {
+		// if (distance <= spawnRadius && !bSpawnedPirates) {
 
-			SpawnPirate();
+		// 	SpawnPirate();
 
-		}
+		// }
 
 	} else {
 
