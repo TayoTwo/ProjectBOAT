@@ -29,10 +29,12 @@ public:
 
 private:
 
+	UPROPERTY(EditDefaultsOnly)
+	bool bIsBossDropBox;
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* mesh;
-	// UPROPERTY(EditAnywhere)
-	// class UBoxComponent* boxComponent;
+	UPROPERTY(EditAnywhere)
+	class UBoxComponent* boxComponent;
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit);
 

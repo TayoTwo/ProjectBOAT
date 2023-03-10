@@ -31,7 +31,7 @@ void APlayerShip::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
     PlayerInputComponent->BindAxis(TEXT("Horizontal"),this,&APlayerShip::MoveHorizontal);
 
-    PlayerInputComponent->BindAction(TEXT("LMB"),IE_Pressed,this,&ABaseShip::Fire);
+    PlayerInputComponent->BindAction(TEXT("LMB"),IE_Pressed,this,&APlayerShip::Fire);
     PlayerInputComponent->BindAction(TEXT("RMB"),IE_Pressed,this,&APlayerShip::SetTarget);
     PlayerInputComponent->BindAction(TEXT("Space"),IE_Pressed,this,&APlayerShip::StopMovement);
 
@@ -114,7 +114,7 @@ void APlayerShip::MoveVertical(float value){
     FVector moveDir = FVector::ZeroVector;
     moveDir.X = value * moveSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
 
-    //UE_LOG(LogTemp, Warning, TEXT("MOVE DIR %d"),moveDir.X);
+    //UE_LOG(LogTemp, Warning, TEXT("MOVE DIR %f"),moveDir.X);
 
 	AddActorLocalOffset(moveDir,true);
 
@@ -206,9 +206,9 @@ void APlayerShip::SetTarget(){
 
 void APlayerShip::Fire(){
 
-	UE_LOG(LogTemp, Display, TEXT("FIRE!"));
-
     Super::Fire();
+
+	UE_LOG(LogTemp, Display, TEXT("FIRE!"));
 
     // if(PlayerController){
 

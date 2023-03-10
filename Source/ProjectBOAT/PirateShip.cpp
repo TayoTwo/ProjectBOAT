@@ -31,7 +31,6 @@ void APirateShip::BeginPlay(){
 
     if(weaponActor){
 
-        GetWorldTimerManager().SetTimer(FireRateTimerHandle,this, &APirateShip::CheckFireCondition,weaponActor->FireRate,true);
 
     }
 
@@ -74,11 +73,7 @@ void APirateShip::CheckFireCondition(){
         //UE_LOG(LogTemp, Display, TEXT("FIRE"));
         Fire();
 
-    } else {
-
-        GetWorldTimerManager().ClearTimer(FireRateTimerHandle);
-
-    }
+    } 
 
 }
 

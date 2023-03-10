@@ -6,6 +6,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/SphereComponent.h"
+#include "Particles/ParticleSystemComponent.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -20,12 +21,14 @@ AProjectile::AProjectile()
 	projectileMesh->SetupAttachment(sphereComponent);
 
 	projectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement Component"));
-	//projectileMovementComponent->SetAttachement(RootComponent);
 
 	projectileMovementComponent->InitialSpeed = initialSpeed;
 	projectileMovementComponent->MaxSpeed = maxSpeed;
 	projectileMovementComponent->bIsHomingProjectile = hasTracking;
 	projectileMovementComponent->HomingAccelerationMagnitude = TrackingStrength;
+
+	SmokeTrail = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Smoke Trail"));
+	SmokeTrail->SetupAttachment(projectileMesh);
 
 }
 
@@ -35,6 +38,7 @@ void AProjectile::BeginPlay()
 	Super::BeginPlay();
 
 	sphereComponent->OnComponentHit.AddDynamic(this,&AProjectile::OnHit);
+	UGameplayStatics::PlaySoundAtLocation(this,LaunchSound,GetActorLocation());
 	
 }
 
@@ -93,8 +97,8 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimiti
 
 			//UE_LOG(LogTemp, Display, TEXT("APPLYING DMG"));
 			UGameplayStatics::ApplyDamage(OtherActor,Damage, MyOwnerInstigator, this,DamageTypeClass);
-			//UGameplayStatics::SpawnEmitterAtLocation(this,HitParticles,GetActorLocation(),GetActorRotation());
-			//UGameplayStatics::PlaySoundAtLocation(this,HitSound,GetActorLocation());
+			UGameplayStatics::SpawnEmitterAtLocation(this,HitParticles,GetActorLocation(),GetActorRotation());
+			UGameplayStatics::PlaySoundAtLocation(this,HitSound,GetActorLocation());
 
 		}
 

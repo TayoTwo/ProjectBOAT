@@ -8,7 +8,8 @@
 
 UBTTMoveToTarget::UBTTMoveToTarget(const FObjectInitializer &ObjectInitializer){
 
-
+    bNotifyTick = true;
+    bTickIntervals = true;
 
 }
 
@@ -18,10 +19,11 @@ EBTNodeResult::Type UBTTMoveToTarget::ExecuteTask(UBehaviorTreeComponent &OwnerC
     //get AI controller and its NPC
 
     //UE_LOG(LogTemp, Display, TEXT("TASK EXECUTING"));
-    bNotifyTick = true;
+
     controller = Cast<APirateAIController>(OwnerComp.GetAIOwner());
     ship = controller->ship;
     //AcceptableRadius = controller->shootRange;
+    SetNextTickTime(NodeMemory, TickInterval);
 
     return EBTNodeResult::Type::InProgress;
 
@@ -35,7 +37,7 @@ void UBTTMoveToTarget::TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMe
 
     if(ship != nullptr){
 
-        //UE_LOG(LogTemp, Display, TEXT("TASK MOVING"));
+        //UE_LOG(LogTemp, Display, TEXT("Delta Seconds %f"),DeltaSeconds);
 
         UBlackboardComponent* blackBoard = controller->GetBlackboardComponent(); 
 
@@ -50,13 +52,15 @@ void UBTTMoveToTarget::TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMe
         ship->SetActorRotation(FMath::RInterpTo(
                             ship->GetActorRotation(),
                             targetRotation,
-                            UGameplayStatics::GetWorldDeltaSeconds(this),
-                            ship->turnSpeed * UGameplayStatics::GetWorldDeltaSeconds(this)
+                            TickInterval,
+                            ship->turnSpeed * TickInterval
                              ));
 
 
-        FVector moveDir = FVector::ZeroVector;
-        moveDir.X = ship->moveSpeed * 0.02f;
+        moveDir = FVector::ZeroVector;
+        moveDir.X = ship->moveSpeed * TickInterval;
+
+        //UE_LOG(LogTemp, Display, TEXT("%s MOVE SPEED %f"),*ship->GetName(),moveDir.X);
 
         ship->AddActorLocalOffset(moveDir,true);
 

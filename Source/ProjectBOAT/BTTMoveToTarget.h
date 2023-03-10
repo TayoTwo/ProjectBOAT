@@ -24,6 +24,10 @@ public:
 	virtual void TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMemory,float DeltaSeconds) override; 
 	class ABaseShip* ship;
 	class APirateAIController* controller;
+	UPROPERTY(Category = "Tick", EditAnywhere)
+	float TickInterval{ 0.016f };
+	FVector moveDir;
+
 	UPROPERTY(EditAnywhere)
 	float AcceptableRadius;
 	UPROPERTY(VisibleAnywhere)

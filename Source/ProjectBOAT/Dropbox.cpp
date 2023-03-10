@@ -11,8 +11,10 @@ ADropbox::ADropbox()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	boxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Component"));
+	RootComponent = boxComponent;
 	mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Dropbox Mesh"));
-	RootComponent = mesh;
+	mesh->SetupAttachment(boxComponent);
 
 }
 
@@ -48,24 +50,29 @@ void ADropbox::DropItems(UInventoryComponent* inventory){
 void ADropbox::OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit){
 
 	UE_LOG(LogTemp, Display, TEXT("HIT DROPBOX"));
-	auto MyOwner = GetOwner();
 
-	if(MyOwner == nullptr || OtherActor == nullptr) return;
+	if(!bIsBossDropBox){
 
-	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
-	auto DamageTypeClass = UDamageType::StaticClass();
+		auto MyOwner = GetOwner();
 
-	if(OtherActor != MyOwner || OtherActor->FindComponentByClass<UInventoryComponent>() == nullptr){
+		if(MyOwner == nullptr || OtherActor == nullptr) return;
 
-		UInventoryComponent* inventory = OtherActor->FindComponentByClass<UInventoryComponent>();
+		auto MyOwnerInstigator = MyOwner->GetInstigatorController();
+		auto DamageTypeClass = UDamageType::StaticClass();
 
-		DropItems(inventory);
+		if(OtherActor != MyOwner && OtherActor->FindComponentByClass<UInventoryComponent>() != nullptr){
 
-		Destroy();
+			UInventoryComponent* inventory = OtherActor->FindComponentByClass<UInventoryComponent>();
+
+			DropItems(inventory);
+
+			Destroy();
+
+		}
+
 
 	}
 
-	Destroy();
 
 	//UE_LOG(LogTemp,Warning, TEXT("%s hit %s's %s"),*HitComp->GetName(),*OtherActor->GetName(),*OtherComp->GetName());
 

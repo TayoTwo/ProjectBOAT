@@ -9,6 +9,7 @@
 #include "Sound/SoundBase.h"
 #include "Target.h"
 #include "Item.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ABaseShip::ABaseShip()
@@ -84,13 +85,6 @@ void ABaseShip::TurnWeapon(FVector targetLocation){
 }
 
 void ABaseShip::Fire(){
-
-
-	if(fireClip){
-
-		UGameplayStatics::PlaySoundAtLocation(this,fireClip,GetActorLocation());
-
-	}
 	
 	if(weaponActor){
 
@@ -116,6 +110,9 @@ void ABaseShip::Fire(){
 void ABaseShip::Die(){
 
 	UE_LOG(LogTemp, Display, TEXT("%s has DIED"),*GetName());
+
+	UGameplayStatics::SpawnEmitterAtLocation(this,deathParticles,GetActorLocation(),GetActorRotation());
+	UGameplayStatics::PlaySoundAtLocation(this,deathSound,GetActorLocation());
 
 }
 void ABaseShip::OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit){

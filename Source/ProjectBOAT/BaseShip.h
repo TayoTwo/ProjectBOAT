@@ -73,8 +73,11 @@ private:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit);
 
-	UPROPERTY(EditDefaultsOnly)
-	class USoundBase* fireClip;
+	UPROPERTY(EditAnywhere, Category = "SFX")
+	class USoundBase* deathSound;
+
+	UPROPERTY(EditAnywhere, Category = "VFX")
+	class UParticleSystem* deathParticles;
 
 	int spawnIndex;
 	// UPROPERTY(EditAnywhere,Category = "Combat")

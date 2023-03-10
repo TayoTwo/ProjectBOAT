@@ -15,6 +15,13 @@ ADangerZone::ADangerZone()
 
 void ADangerZone::SpawnPirate(){
 
+	if(spawnIndex >= spawnCount){
+
+		bSpawnedPirates = true;
+		return;
+
+	}
+
 	UE_LOG(LogTemp, Display, TEXT("SPAWNING PIRATE"));
 	
 	FVector spawnPos = FVector(FMath::RandRange(-spawnRadius, spawnRadius),FMath::RandRange(-spawnRadius, spawnRadius),0); 
@@ -22,13 +29,6 @@ void ADangerZone::SpawnPirate(){
 	GetWorld()->SpawnActor<APirateShip>(pirate,spawnPos + GetActorLocation(),spawnRot);
 
 	spawnIndex++;
-
-	if(spawnIndex >= spawnCount){
-
-		bSpawnedPirates = true;
-
-	}
-
 
 }
 

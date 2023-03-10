@@ -31,5 +31,6 @@ public:
 	bool bHasTaskFinished;
 	virtual void OnGameplayTaskActivated(UGameplayTask &Task) override;
 	virtual void OnGameplayTaskDeactivated(UGameplayTask & Task) override;
+	virtual EBTNodeResult::Type AbortTask(UBehaviorTreeComponent &OwnerComp, uint8* NodeMemory);
 	
 };

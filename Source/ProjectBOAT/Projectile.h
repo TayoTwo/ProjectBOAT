@@ -44,6 +44,18 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	class UProjectileMovementComponent* projectileMovementComponent;
+	
+	UPROPERTY(EditAnywhere, Category = "VFX")
+	class UParticleSystem* HitParticles;
+
+	UPROPERTY(EditAnywhere, Category = "VFX")
+	class UParticleSystemComponent* SmokeTrail;
+
+	UPROPERTY(EditAnywhere, Category = "SFX")
+	class USoundBase* LaunchSound;
+	
+	UPROPERTY(EditAnywhere, Category = "SFX")
+	USoundBase* HitSound;
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit);

@@ -47,21 +47,20 @@ void APirateAIController::Tick(float DeltaSeconds){
 
     if(ship == nullptr){
 
-        UE_LOG(LogTemp, Display, TEXT("TICK SHIP IS NULL"));
+        //UE_LOG(LogTemp, Display, TEXT("TICK SHIP IS NULL"));
         ship = Cast<ABaseShip>(GetPawn());
         patrolRouteActor = GetWorld()->SpawnActor<APatrolRoute>(patrolRoute,ship->GetActorLocation(),ship->GetActorRotation());
         AttachToActor(ship,FAttachmentTransformRules::SnapToTargetIncludingScale,"");
 
         SetupController();
 
-
     } 
 
     if(ship != nullptr && TargetPawn != nullptr){
 
         float disToTarget = FVector::Distance(TargetPawn->GetActorLocation(),ship->GetActorLocation());
+        GetBlackboardComponent()->SetValueAsFloat("DistanceToPlayer",disToTarget);
 
-        //CHANGE THIS TO PERCEPTION COMPONENT 
         if(disToTarget < aggroRange && disToTarget > shootRange){
 
             //UE_LOG(LogTemp, Display, TEXT("CHASING"));
@@ -97,6 +96,7 @@ void APirateAIController::SetupController(){
 
         RunBehaviorTree(AIBehaviorTree);
         GetBlackboardComponent()->SetValueAsVector("MoveTo",patrolRouteActor->splineComponent->GetLocationAtSplinePoint(0,ESplineCoordinateSpace::Type::World));
+        //GetBlackboardComponent()->SetValueAsFloat("FireRate",ship->weaponActor->FireRate);
         UE_LOG(LogTemp, Display, TEXT("CONTROLLER SET UP"));
 
     }
