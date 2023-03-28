@@ -20,7 +20,7 @@ enum class EItemType : uint8{
 
 };
 
-UCLASS(Abstract, BlueprintType,Blueprintable,EditInlineNew,DefaultToInstanced)
+UCLASS(Abstract,BlueprintType,Blueprintable,EditInlineNew,DefaultToInstanced)
 class PROJECTBOAT_API UItem : public UObject
 {
 	GENERATED_BODY()
@@ -50,6 +50,8 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Info")
 	TSubclassOf<class AWeapon> weaponClass;
+	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite, Category = "Info")
+	AWeapon* itemWeaponActor;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Stats")
 	float HP;	
@@ -57,7 +59,18 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Stats")
 	float Weight;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Stats")
+	float value;
+
+
 	UPROPERTY()	
 	class UInventoryComponent* ownerInventory;
+
+	FString GetName();
+
+	virtual void Use(class ABaseShip* ship);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnUse(ABaseShip* ship); 
 
 };

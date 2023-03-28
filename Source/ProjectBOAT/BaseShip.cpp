@@ -37,7 +37,7 @@ void ABaseShip::BeginPlay(){
 
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Display, TEXT("BEGIN PLAY STARTING"));
+	//UE_LOG(LogTemp, Display, TEXT("BEGIN PLAY STARTING"));
 
     if(!weaponActor){
 
@@ -49,21 +49,27 @@ void ABaseShip::BeginPlay(){
 
         weaponActor->SetActorLocation(weaponSpawnPoint->GetComponentLocation());
 
-		//UItem* weaponItem = Cast<AWeapon>(*currentWeapon)->itemClass;
-		UItem* weaponItem = weaponActor->itemClass;
+
+		//UItem* weaponItem = weaponActor->itemClass;
+
+		UItem* weaponItem = NewObject<UItem>(weaponActor->itemClass);
+		UE_LOG(LogTemp, Display, TEXT("ITEM CREATED CALLED: %s"),*weaponActor->itemClass->itemDisplayName.ToString());
+
+		weaponItem->itemWeaponActor = weaponActor;
 
 		if(!weaponItem){
 
 			UE_LOG(LogTemp, Display, TEXT("CASTING FAILED"));
 
+		} else {
+
+			UE_LOG(LogTemp, Display, TEXT("CASTING SUCCEEDED"));
+			//inventoryComponent->AddItem(weaponItem);
+
 		}
 
-		inventoryComponent->AddItem(weaponItem);
 
     }
-
-	
-	//UE_LOG(LogTemp, Display, TEXT("TEST"));
 
 }
 
@@ -118,5 +124,48 @@ void ABaseShip::Die(){
 void ABaseShip::OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit){
 
 	UE_LOG(LogTemp, Display, TEXT("HIT SOMETHING"));
+
+}
+
+void ABaseShip::UseItem(UItem* item){
+
+	switch(item->itemType){
+
+		case EItemType::WEAPON:
+
+			currentWeapon = item->weaponClass;
+			UE_LOG(LogTemp, Display, TEXT("CHANGED WEAPON"));
+			break;
+
+		default:
+
+			UE_LOG(LogTemp, Display, TEXT("USING ITEM DEFAULT"));
+			break;
+
+	}
+
+}
+
+
+void ABaseShip::ChangeCurrentWeapon(TSubclassOf<AWeapon> weapon){
+
+	if(weapon && weaponSpawnPoint){
+
+		weaponActor->Destroy();
+		currentWeapon = weapon;
+
+		weaponActor = GetWorld()->SpawnActor<AWeapon>(currentWeapon,weaponSpawnPoint->GetComponentLocation(),weaponSpawnPoint->GetComponentRotation());
+
+		weaponActor->AttachToActor(this,FAttachmentTransformRules(EAttachmentRule::SnapToTarget, false));
+
+		weaponActor->SetActorLocation(weaponSpawnPoint->GetComponentLocation());
+
+	} else {
+			
+		UE_LOG(LogTemp, Display, TEXT("SETTING WEAPON ACTOR TO NULL"));
+		currentWeapon = nullptr;
+
+	}
+
 
 }

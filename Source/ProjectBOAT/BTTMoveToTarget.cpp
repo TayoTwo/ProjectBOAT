@@ -33,8 +33,6 @@ void UBTTMoveToTarget::TickTask(UBehaviorTreeComponent &OwnerComp,uint8 * NodeMe
 
     Super::TickTask(OwnerComp,NodeMemory,DeltaSeconds);
 
-    //UE_LOG(LogTemp, Display, TEXT("TASK TICKING"));
-
     if(ship != nullptr){
 
         //UE_LOG(LogTemp, Display, TEXT("Delta Seconds %f"),DeltaSeconds);

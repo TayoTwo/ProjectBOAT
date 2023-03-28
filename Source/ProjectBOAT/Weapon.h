@@ -15,7 +15,7 @@ public:
 	// Sets default values for this actor's properties
 	AWeapon();
 
-	UPROPERTY(Instanced,EditAnywhere)
+	UPROPERTY(Instanced,EditAnywhere,BlueprintReadWrite)
 	class UItem* itemClass;
 	//UItem* GetItemClass();
 

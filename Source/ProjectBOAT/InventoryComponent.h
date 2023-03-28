@@ -24,18 +24,24 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
+
+	// UFUNCTION(BlueprintCallable)
+	// void InitInventory(UItem &item);
+	UFUNCTION(BlueprintCallable)
 	bool AddItem(UItem* item);
+	UFUNCTION(BlueprintCallable)
 	bool RemoveItem(UItem* item);
 
 	UPROPERTY(BlueprintAssignable)
 	FOnInventoryUpdated OnInventoryUpdated;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Items")
-	TArray<class UItem*> items;
+	TArray<class UItem*> inventoryItems;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Items")
-	int maxInventorySize;
+	int32 maxInventorySize = 10;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Items")
+	int gold;
 
 
 };

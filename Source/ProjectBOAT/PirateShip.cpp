@@ -25,7 +25,7 @@ void APirateShip::BeginPlay(){
 
     Super::BeginPlay();
 
-    playerShip = Cast<APlayerShip>(UGameplayStatics::GetPlayerPawn(this,0));
+    playerShip = UGameplayStatics::GetPlayerPawn(this,0);
     controller =  Cast<APirateAIController>(UAIBlueprintHelperLibrary::GetAIController(this));
     //sightConfig->SightRadius = controller->aggroRange;
 
@@ -108,14 +108,16 @@ void APirateShip::Die(){
 
     //Spawn dropbox of items
 
+    Super::Die();
+
     if(dropbox != nullptr){
 
         auto dropBoxActor = GetWorld()->SpawnActor<ADropbox>(dropbox,GetActorLocation(),GetActorRotation());
         dropBoxActor->SetOwner(this);
 
-        for(int i = 0; i < inventoryComponent->items.Num();i++){
+        for(int i = 0; i < inventoryComponent->inventoryItems.Num();i++){
 
-		    dropBoxActor->items.Add(inventoryComponent->items[i]);
+		    dropBoxActor->items.Add(inventoryComponent->inventoryItems[i]);
 
         }
 

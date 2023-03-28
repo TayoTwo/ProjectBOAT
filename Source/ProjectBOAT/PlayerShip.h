@@ -22,6 +22,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void BeginPlay() override;
 	virtual void Fire() override;
+	void ChangeFireState();
 	virtual void Die() override;
 	void EquipItem(UItem* item);
 
@@ -33,6 +34,8 @@ public:
 	float keepDriftingDistance = 100.f;
 	bool bIsDrifting = false;
 	FVector spawnPos;
+	FTimerHandle timerHandle;
+	bool canFire;
 	
 	APlayerController* PlayerController;
 

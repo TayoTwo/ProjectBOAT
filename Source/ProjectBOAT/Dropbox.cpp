@@ -22,7 +22,7 @@ ADropbox::ADropbox()
 void ADropbox::BeginPlay()
 {
 	Super::BeginPlay();
-	mesh->OnComponentHit.AddDynamic(this,&ADropbox::OnHit);
+	boxComponent->OnComponentHit.AddDynamic(this,&ADropbox::OnHit);
 
 }
 

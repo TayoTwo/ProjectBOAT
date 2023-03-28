@@ -326,5 +326,21 @@
 			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_ProjectBOAT\\ProjectBOAT.255.rsp"
 		],
 		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\WeaponItem.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_ProjectBOAT\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\Source\\ProjectBOAT\\WeaponItem.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Documents\\Github\\Unreal Projects\\ProjectBOAT\\.vscode\\compileCommands_ProjectBOAT\\ProjectBOAT.255.rsp"
+		],
+		"directory": "K:\\Installs\\Epic Games\\UE_5.1\\Engine\\Source"
 	}
 ]

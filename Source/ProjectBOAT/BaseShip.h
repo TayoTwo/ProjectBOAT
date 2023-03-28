@@ -19,6 +19,13 @@ public:
 	// Sets default values for this pawn's properties
 	ABaseShip();
 	void TurnWeapon(FVector targetLocation);
+	UFUNCTION(BlueprintCallable)
+	void UseItem(class UItem* item);
+	virtual void Fire();
+	virtual void Die();
+	UFUNCTION(BlueprintCallable)
+	void ChangeCurrentWeapon(TSubclassOf<class AWeapon> weapon);
+
 	UPROPERTY(EditAnywhere,Category = "Stats")
 	float turretTurnSpeed = 25.f;
 	UPROPERTY(EditAnywhere,Category = "Stats")
@@ -26,15 +33,13 @@ public:
 	UPROPERTY(EditAnywhere,Category = "Stats")
 	float turnSpeed = 500;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	class AWeapon* weaponActor;
 	class AActor* EnemyTarget;
 
 	UPROPERTY(EditAnywhere)
 	class USceneComponent* weaponSpawnPoint;
 
-	virtual void Fire();
-	virtual void Die();
 	class AActor* targetActor;
 	FTimerHandle FireRateTimerHandle;
 	UPROPERTY(EditAnywhere)
@@ -43,6 +48,8 @@ public:
 	class UInventoryComponent* inventoryComponent;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	class UHealthComponent* healthComponent;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AWeapon> currentWeapon;
 	
 
 protected:
@@ -50,8 +57,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<class AWeapon> currentWeapon;
+
 
 	UPROPERTY(VisibleAnywhere,Category = "MoveTo")
 	bool isMovingToTarget = false;

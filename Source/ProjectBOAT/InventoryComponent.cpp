@@ -8,11 +8,10 @@
 // Sets default values for this component's properties
 UInventoryComponent::UInventoryComponent()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
 
-	// ...
+	inventoryItems = TArray<UItem*>();
+	maxInventorySize = 10;
+
 }
 
 
@@ -21,25 +20,44 @@ void UInventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	maxInventorySize = 10;
 	
 }
 
-bool UInventoryComponent::AddItem(UItem* item){
+// void UInventoryComponent::InitInventory(UItem &item){
+
+
+// 	inventoryItems = TArray<UItem*>();
 
 	
-	if(items.Num() >= maxInventorySize || item == nullptr){
+// }
 
-		UE_LOG(LogTemp, Display, TEXT("ITEM IS NULL"));
+//DEBUGGING NOTES
+//ITS SOMETHING TO DO WITH TARRAY
+//Checklist:
+//static_cast didn't work
+//I tried using TMaps instead so its definitely something to do with the Item class
+
+
+bool UInventoryComponent::AddItem(UItem* item){
+ 
+	//UE_LOG(LogTemp, Display, TEXT("INVENTORY SIZE: %d"),items.Num());
+	//UE_LOG(LogTemp, Display, TEXT("MAX INVENTORY SIZE IS %d"),maxInventorySize);
+
+	if(inventoryItems.Num() >= maxInventorySize || !item){
+
+		UE_LOG(LogTemp, Display, TEXT("INVENTORY IS FULL OR ITEM IS NULL"));
 		return false;
 
 	}
 
-	UE_LOG(LogTemp, Display, TEXT("ADDING %s to %s"), *item->itemDisplayName.ToString(), *GetOwner()->GetName());
+	UE_LOG(LogTemp, Display, TEXT("ADDING %s to %s"), 
+	*item->GetName(), 
+	*GetOwner()->GetName());
 
 	item->ownerInventory  = this;
 	item->World = GetWorld();
-	items.Add(item);
+	inventoryItems.Add(item);
+
 	OnInventoryUpdated.Broadcast();
 
 	return true;
@@ -51,7 +69,7 @@ bool UInventoryComponent::RemoveItem(UItem* item){
 
 		item->ownerInventory = nullptr;
 		item->World = nullptr;
-		items.RemoveSingle(item);
+		inventoryItems.RemoveSingle(item);
 		OnInventoryUpdated.Broadcast();
 		return true;
 

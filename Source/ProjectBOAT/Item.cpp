@@ -2,6 +2,7 @@
 
 
 #include "Item.h"
+#include "BaseShip.h"
 
 UItem::UItem(){
 
@@ -9,3 +10,14 @@ UItem::UItem(){
 
 }
 
+void UItem::Use(ABaseShip* ship){
+
+
+
+}
+
+FString UItem::GetName(){
+
+    return itemDisplayName.ToString();
+
+}

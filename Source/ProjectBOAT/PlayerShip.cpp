@@ -54,6 +54,8 @@ void APlayerShip::BeginPlay()
     PlayerController->bEnableMouseOverEvents = true;
 
     spawnPos = GetActorLocation();
+ 
+    GetWorldTimerManager().SetTimer(timerHandle,this, &APlayerShip::ChangeFireState,weaponActor->FireRate,true);
 	
 }
 
@@ -206,9 +208,13 @@ void APlayerShip::SetTarget(){
 
 void APlayerShip::Fire(){
 
-    Super::Fire();
+    if(canFire){
 
-	UE_LOG(LogTemp, Display, TEXT("FIRE!"));
+        Super::Fire();
+        UE_LOG(LogTemp, Display, TEXT("FIRE!"));
+        canFire = false;
+
+    }
 
     // if(PlayerController){
 
@@ -220,6 +226,12 @@ void APlayerShip::Fire(){
     //     //     ));
 
     // }
+
+}
+
+void APlayerShip::ChangeFireState(){
+
+    canFire = true;
 
 }
 
@@ -237,15 +249,15 @@ void APlayerShip::Die(){
         auto dropBoxActor = GetWorld()->SpawnActor<ADropbox>(dropbox,diePos,GetActorRotation());
         dropBoxActor->SetOwner(this);
 
-        for(int i = 0; i < inventoryComponent->items.Num();i++){
+        for(int i = 0; i < inventoryComponent->inventoryItems.Num();i++){
 
-		    dropBoxActor->items.Add(inventoryComponent->items[i]);
+		    dropBoxActor->items.Add(inventoryComponent->inventoryItems[i]);
 
         }
 
 	}
 
-    inventoryComponent->items.Empty();
+    //inventoryComponent->inventoryItems.Empty();
     healthComponent->Health = healthComponent->MaxHealth;
 
     UE_LOG(LogTemp, Display,TEXT("PLAYER DIED"));

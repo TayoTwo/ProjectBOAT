@@ -29,7 +29,7 @@ public:
 
 	void SetTarget();
 
-	class APlayerShip* playerShip;
+	class APawn* playerShip;
 	class APirateAIController* controller;
 
 	void CheckFireCondition();

@@ -35,7 +35,7 @@ void APirateAIController::BeginPlay()
 
     } else {
 
-        UE_LOG(LogTemp, Display, TEXT("BEGIN PLAY SHIP IS NULL"));
+        UE_LOG(LogTemp, Display, TEXT("AIC: BEGIN PLAY SHIP IS NULL"));
 
     }
 
@@ -53,6 +53,7 @@ void APirateAIController::Tick(float DeltaSeconds){
         AttachToActor(ship,FAttachmentTransformRules::SnapToTargetIncludingScale,"");
 
         SetupController();
+        return;
 
     } 
 
